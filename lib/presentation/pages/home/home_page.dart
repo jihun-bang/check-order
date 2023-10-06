@@ -1,3 +1,4 @@
+import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/presentation/widgets/button.dart';
 import 'package:check_order/presentation/widgets/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
@@ -27,13 +28,32 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF9FF),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _menu,
-          _content,
-        ],
+        backgroundColor: const Color(0xFFFAF9FF),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _menu,
+            _content,
+          ],
+        ),
+        floatingActionButton: _cart);
+  }
+
+  Widget get _cart {
+    return SizedBox(
+      width: 92,
+      height: 92,
+      child: FittedBox(
+        child: FloatingActionButton(
+          backgroundColor: kPrimaryColor,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset(
+              'assets/icons/icon_cart.svg',
+            ),
+          ),
+          onPressed: () {},
+        ),
       ),
     );
   }
