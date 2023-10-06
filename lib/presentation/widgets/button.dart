@@ -48,10 +48,9 @@ class _CheckOrderButtonState extends State<CheckOrderButton> {
     return ElevatedButton(
       onPressed: widget.enable ? () async => await _handlePress() : null,
       style: ElevatedButton.styleFrom(
-        elevation: 0,
-        fixedSize: Size(widget.width, widget.height),
-        foregroundColor: widget.color,
-      ),
+          elevation: 0,
+          fixedSize: Size(widget.width, widget.height),
+          backgroundColor: widget.color),
       child: Center(
         child: _isLoading
             ? const SizedBox(

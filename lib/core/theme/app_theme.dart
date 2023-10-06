@@ -17,5 +17,4 @@ final appTheme = ThemeData(
     labelMedium: TextStyle(color: Color(0xFF2B2B2B)),
   ),
   primaryColor: const Color(0xFFFF5D02),
-  colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF5D02)),
 );
