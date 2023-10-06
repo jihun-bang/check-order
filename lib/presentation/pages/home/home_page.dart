@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:check_order/presentation/widgets/button.dart';
 import 'package:check_order/presentation/widgets/empty_box.dart';
+import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
+import 'package:check_order/presentation/widgets/home/order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -48,10 +48,10 @@ class _HomePageState extends State<HomePage> {
         children: [
           _logo,
           const EmptyBox(height: 39),
-          _menuItem(label: '인기메뉴', enabled: true),
-          _menuItem(label: '국물요리', enabled: false),
-          _menuItem(label: '튀김요리', enabled: false),
-          _menuItem(label: '술 & 음료', enabled: false),
+          const MenuListItem(label: '인기메뉴', enabled: true),
+          const MenuListItem(label: '국물요리', enabled: false),
+          const MenuListItem(label: '튀김요리', enabled: false),
+          const MenuListItem(label: '술 & 음료', enabled: false),
           const Spacer(),
           CheckOrderButton(
             label: '주문 내역',
@@ -88,62 +88,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _menuItem({required String label, required bool enabled}) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Container(
-        width: 264,
-        height: 82,
-        padding: const EdgeInsets.only(top: 12, right: 16, bottom: 12),
-        decoration: ShapeDecoration(
-          color: enabled ? Colors.white : null,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-            ),
-          ),
-        ),
-        child: Container(
-          clipBehavior: Clip.antiAlias,
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Transform.rotate(
-                angle: 45 * pi / 180,
-                child: Container(
-                  width: 8,
-                  height: 8,
-                  decoration: enabled
-                      ? const BoxDecoration(color: Color(0xFFFF5D02))
-                      : null,
-                ),
-              ),
-              const EmptyBox(width: 11.69),
-              Text(
-                label,
-                style: TextStyle(
-                  color: enabled
-                      ? const Color(0xFFFF5D02)
-                      : const Color(0xFF2B2B2B),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget get _content {
-    return Container(width: 1000, height: 800);
+    return SizedBox(
+      width: 1000,
+      height: 800,
+      child: GridView.builder(
+          padding: const EdgeInsets.fromLTRB(64, 24, 64, 24),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 200 / 280,
+            crossAxisCount: 4,
+            crossAxisSpacing: 24,
+            mainAxisSpacing: 24,
+          ),
+          itemCount: 24,
+          itemBuilder: (BuildContext context, int index) {
+            return const MenuCard();
+          }),
+    );
   }
 }
