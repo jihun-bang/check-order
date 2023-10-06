@@ -16,5 +16,7 @@ final appTheme = ThemeData(
     labelLarge: TextStyle(color: Color(0xFF2B2B2B)),
     labelMedium: TextStyle(color: Color(0xFF2B2B2B)),
   ),
-  primaryColor: const Color(0xFFFF5D02),
+  primaryColor: kPrimaryColor,
 );
+
+const Color kPrimaryColor = Color(0xFFFF5D02);
