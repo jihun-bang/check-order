@@ -1,4 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'core/router/router.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,13 +15,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints.tight(const Size(1280, 800)),
+        child: MaterialApp.router(
+          title: 'Check',
+          theme: appTheme,
+          routeInformationProvider: router.routeInformationProvider,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
+          debugShowCheckedModeBanner: false,
+          scrollBehavior: const ScrollBehavior()
+              .copyWith(dragDevices: PointerDeviceKind.values.toSet()),
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko', 'KR'),
+          ],
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
