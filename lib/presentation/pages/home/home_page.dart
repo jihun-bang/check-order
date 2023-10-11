@@ -2,7 +2,7 @@ import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/presentation/widgets/button.dart';
 import 'package:check_order/presentation/widgets/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
-import 'package:check_order/presentation/widgets/home/munu_list_indicator.dart';
+import 'package:check_order/presentation/widgets/home/munu_category_indicator.dart';
 import 'package:check_order/presentation/widgets/home/order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final _scrollController = ScrollController();
+  static const _menuCategories = ['국물요리', '튀김요리', '꼬치구이', '술&음료'];
 
   @override
   void initState() {
@@ -122,14 +123,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget get _menuIndicator {
     return Padding(
       padding: const EdgeInsets.only(top: 62, left: 48),
-      child: MenuListIndicator(
+      child: MenuCategoryIndicator(
         controller: TabController(length: 4, vsync: this),
-        menuItems: const [
-          '국물요리',
-          '튀김요리',
-          '꼬치구이',
-          '술&음료',
-        ],
+        categories: _menuCategories,
       ),
     );
   }
