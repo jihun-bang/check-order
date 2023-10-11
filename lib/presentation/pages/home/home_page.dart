@@ -4,6 +4,7 @@ import 'package:check_order/presentation/widgets/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
 import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
 import 'package:check_order/presentation/widgets/home/munu_category_indicator.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,13 +18,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  final _scrollController = ScrollController();
+  late final TabController _categoryController;
   static const _menuCategories = ['국물요리', '튀김요리', '꼬치구이', '술&음료'];
 
   @override
   void initState() {
     super.initState();
 
+    _categoryController = TabController(length: 4, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((_) async {});
   }
 
@@ -70,10 +72,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           _logo,
           const EmptyBox(height: 39),
-          const MenuListItem(label: '인기메뉴', enabled: true),
-          const MenuListItem(label: '국물요리', enabled: false),
-          const MenuListItem(label: '튀김요리', enabled: false),
-          const MenuListItem(label: '술 & 음료', enabled: false),
+          ..._menuCategories.mapIndexed(
+            (index, item) => MenuListItem(
+              label: item,
+              enabled: _categoryController.index == index,
+              onTap: () {
+                setState(() {
+                  _categoryController.animateTo(index);
+                });
+              },
+            ),
+          ),
           const Spacer(),
           CheckOrderButton(
             label: '주문 내역',
@@ -124,7 +133,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.only(top: 62, left: 48),
       child: MenuCategoryIndicator(
-        controller: TabController(length: 4, vsync: this),
+        controller: _categoryController,
         categories: _menuCategories,
       ),
     );
