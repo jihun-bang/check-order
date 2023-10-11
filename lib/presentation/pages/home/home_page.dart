@@ -1,9 +1,9 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/presentation/widgets/button.dart';
 import 'package:check_order/presentation/widgets/empty_box.dart';
+import 'package:check_order/presentation/widgets/home/menu_card.dart';
 import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
 import 'package:check_order/presentation/widgets/home/munu_category_indicator.dart';
-import 'package:check_order/presentation/widgets/home/order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -143,7 +143,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
           itemCount: 24,
           itemBuilder: (BuildContext context, int index) {
-            return const MenuCard();
+            return const MenuCard(
+              name: '금게조개술찜',
+              price: 16900,
+            );
           }),
     );
   }
