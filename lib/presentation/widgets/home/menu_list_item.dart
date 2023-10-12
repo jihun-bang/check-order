@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../empty_box.dart';
+import '../common/empty_box.dart';
 
 class MenuListItem extends StatelessWidget {
   final String label;

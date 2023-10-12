@@ -1,7 +1,8 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
-import 'package:check_order/presentation/widgets/button.dart';
-import 'package:check_order/presentation/widgets/empty_box.dart';
+import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
+import 'package:check_order/presentation/widgets/common/button.dart';
+import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
 import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
 import 'package:check_order/presentation/widgets/home/munu_category_indicator.dart';
@@ -22,8 +23,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late final ItemScrollController _itemScrollController;
   late final ItemPositionsListener _itemPositionsListener;
-  final ScrollOffsetController scrollOffsetController =
-      ScrollOffsetController();
 
   int _menuItemsIndex = 0;
   static const _menuCategories = ['국물요리', '튀김요리', '꼬치구이', '술&음료'];
@@ -47,6 +46,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   void _showAddCart() {
     showMyDialog(context: context, child: SizedBox());
+  }
+
+  void _showCart() {
+    showDialog(
+        barrierColor: Colors.transparent,
+        context: context,
+        builder: (_) {
+          return Dialog(
+            alignment: Alignment.centerRight,
+            insetPadding: EdgeInsets.all(12),
+            child: CartDialog(),
+          );
+        });
   }
 
   void _showOrderHistory() {
@@ -95,7 +107,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           onPressed: () {
-            _showAddCart();
+            _showCart();
           },
         ),
       ),

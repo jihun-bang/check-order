@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:check_order/core/utils/extension.dart';
-import 'package:check_order/presentation/widgets/empty_box.dart';
+import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:flutter/material.dart';
 
 class MenuCard extends StatelessWidget {
