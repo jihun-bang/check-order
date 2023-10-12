@@ -3,13 +3,15 @@ import 'package:check_order/core/theme/color.dart';
 import 'package:flutter/material.dart';
 
 class MenuCategoryIndicator extends StatefulWidget {
-  final TabController controller;
+  final int selectedIndex;
   final List<String> categories;
+  final Function(int) onTap;
 
   const MenuCategoryIndicator({
     super.key,
-    required this.controller,
+    required this.selectedIndex,
     required this.categories,
+    required this.onTap,
   });
 
   @override
@@ -65,14 +67,14 @@ class _MenuCategoryIndicatorState extends State<MenuCategoryIndicator> {
   }
 
   Widget buildText(int index) {
-    final isSelected = widget.controller.index == index;
+    final isSelected = widget.selectedIndex == index;
 
     return GestureDetector(
       onTap: () {
         setState(() {
           calculateIndicatorPosition(index);
         });
-        widget.controller.animateTo(index);
+        widget.onTap.call(index);
       },
       child: Container(
         padding: const EdgeInsets.only(bottom: 12, right: 48),
