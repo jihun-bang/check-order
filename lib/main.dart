@@ -1,10 +1,13 @@
 import 'dart:ui';
 
+import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
+import 'dependencies_injection.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,23 +21,28 @@ class MyApp extends StatelessWidget {
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints.tight(const Size(1280, 800)),
-        child: MaterialApp.router(
-          title: 'Check',
-          theme: appTheme,
-          routeInformationProvider: router.routeInformationProvider,
-          routeInformationParser: router.routeInformationParser,
-          routerDelegate: router.routerDelegate,
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: const ScrollBehavior()
-              .copyWith(dragDevices: PointerDeviceKind.values.toSet()),
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider<CartProvider>(create: (_) => sl()),
           ],
-          supportedLocales: const [
-            Locale('ko', 'KR'),
-          ],
+          child: MaterialApp.router(
+            title: 'Check',
+            theme: appTheme,
+            routeInformationProvider: router.routeInformationProvider,
+            routeInformationParser: router.routeInformationParser,
+            routerDelegate: router.routerDelegate,
+            debugShowCheckedModeBanner: false,
+            scrollBehavior: const ScrollBehavior()
+                .copyWith(dragDevices: PointerDeviceKind.values.toSet()),
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('ko', 'KR'),
+            ],
+          ),
         ),
       ),
     );

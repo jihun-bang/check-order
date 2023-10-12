@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _showAddCart() {
-    showMyDialog(context: context, child: SizedBox());
+    showMyDialog(context: context, child: const SizedBox());
   }
 
   void _showCart() {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         barrierColor: Colors.transparent,
         context: context,
         builder: (_) {
-          return Dialog(
+          return const Dialog(
             alignment: Alignment.centerRight,
             insetPadding: EdgeInsets.all(12),
             child: CartDialog(),
@@ -62,11 +62,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _showOrderHistory() {
-    showMyDialog(context: context, child: SizedBox());
+    showMyDialog(context: context, child: const SizedBox());
   }
 
   void _showEmployeeCall() {
-    showMyDialog(context: context, child: SizedBox());
+    showMyDialog(context: context, child: const SizedBox());
   }
 
   @override

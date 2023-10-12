@@ -3,7 +3,7 @@ import 'package:check_order/presentation/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../logger.dart';
+import '../utils/logger.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
