@@ -1,4 +1,5 @@
 import 'package:check_order/core/theme/app_theme.dart';
+import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/widgets/button.dart';
 import 'package:check_order/presentation/widgets/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
@@ -44,6 +45,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         curve: Curves.easeOutCubic);
   }
 
+  void _showAddCart() {
+    showMyDialog(context: context, child: SizedBox());
+  }
+
+  void _showOrderHistory() {
+    showMyDialog(context: context, child: SizedBox());
+  }
+
+  void _showEmployeeCall() {
+    showMyDialog(context: context, child: SizedBox());
+  }
+
   @override
   void initState() {
     super.initState();
@@ -81,7 +94,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               'assets/icons/icon_cart.svg',
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            _showAddCart();
+          },
         ),
       ),
     );
@@ -110,13 +125,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           CheckOrderButton(
             label: '주문 내역',
             color: const Color(0xFF2B2B2B),
-            onTap: () {},
+            onTap: () {
+              _showOrderHistory();
+            },
           ),
           const EmptyBox(height: 12),
           CheckOrderButton(
             label: '직원 호출',
             color: const Color(0xFFFF5D02),
-            onTap: () {},
+            onTap: () {
+              _showEmployeeCall();
+            },
           ),
         ],
       ),
