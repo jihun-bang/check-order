@@ -15,6 +15,8 @@ abstract class _$MenuItemModelCWProxy {
 
   MenuItemModel price(int price);
 
+  MenuItemModel description(String description);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MenuItemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -26,6 +28,7 @@ abstract class _$MenuItemModelCWProxy {
     String? name,
     String? imageUrl,
     int? price,
+    String? description,
   });
 }
 
@@ -48,6 +51,10 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
   MenuItemModel price(int price) => this(price: price);
 
   @override
+  MenuItemModel description(String description) =>
+      this(description: description);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MenuItemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -60,6 +67,7 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
     Object? name = const $CopyWithPlaceholder(),
     Object? imageUrl = const $CopyWithPlaceholder(),
     Object? price = const $CopyWithPlaceholder(),
+    Object? description = const $CopyWithPlaceholder(),
   }) {
     return MenuItemModel(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -78,6 +86,11 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
           ? _value.price
           // ignore: cast_nullable_to_non_nullable
           : price as int,
+      description:
+          description == const $CopyWithPlaceholder() || description == null
+              ? _value.description
+              // ignore: cast_nullable_to_non_nullable
+              : description as String,
     );
   }
 }
@@ -98,6 +111,7 @@ MenuItemModel _$MenuItemModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       imageUrl: json['imageUrl'] as String,
       price: json['price'] as int,
+      description: json['description'] as String? ?? '',
     );
 
 Map<String, dynamic> _$MenuItemModelToJson(MenuItemModel instance) =>
@@ -106,4 +120,5 @@ Map<String, dynamic> _$MenuItemModelToJson(MenuItemModel instance) =>
       'name': instance.name,
       'imageUrl': instance.imageUrl,
       'price': instance.price,
+      'description': instance.description,
     };

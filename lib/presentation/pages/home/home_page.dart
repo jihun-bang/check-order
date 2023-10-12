@@ -1,4 +1,6 @@
 import 'package:check_order/core/theme/app_theme.dart';
+import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/presentation/dialog/add_cart_dialog.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
@@ -44,8 +46,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         curve: Curves.easeOutCubic);
   }
 
-  void _showAddCart() {
-    showMyDialog(context: context, child: const SizedBox());
+  void _showAddCart(MenuItemModel item) {
+    showMyDialog(
+        context: context,
+        child: AddCartDialog(
+          item: item,
+          onAddCart: () {
+            Navigator.pop(context);
+          },
+        ));
   }
 
   void _showCart() {
@@ -201,10 +210,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               mainAxisSpacing: 24,
             ),
             itemCount: 6,
-            itemBuilder: (_, __) {
+            itemBuilder: (_, menuIndex) {
+              final item = MenuItemModel(
+                  id: '$index$menuIndex',
+                  name: _menuCategories[index],
+                  imageUrl: '',
+                  price: 16900);
               return MenuCard(
-                name: _menuCategories[index],
-                price: 16900,
+                item: item,
+                onTap: () {
+                  _showAddCart(item);
+                },
               );
             },
           );

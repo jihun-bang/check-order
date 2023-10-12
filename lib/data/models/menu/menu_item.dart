@@ -10,12 +10,14 @@ class MenuItemModel {
   final String name;
   final String imageUrl;
   final int price;
+  final String description;
 
   MenuItemModel({
     required this.id,
     required this.name,
     required this.imageUrl,
     required this.price,
+    this.description = '',
   });
 
   factory MenuItemModel.fromJson(Map<String, dynamic> json) =>
