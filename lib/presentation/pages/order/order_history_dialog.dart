@@ -1,13 +1,11 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/core/utils/extension.dart';
-import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:check_order/presentation/providers/order/order_provider.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 import '../../../dependencies_injection.dart';
 
@@ -25,30 +23,22 @@ class _OrderHistoryDialogState extends State<OrderHistoryDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartProvider>(
-      builder: (_, __, titleBar) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 36),
-          child: Column(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 36, bottom: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              titleBar ?? const SizedBox(),
-              Expanded(child: _buildTable),
-              const Divider(height: 1, color: kPrimaryColor),
-              _buildTotal,
+              _buildTitleBar,
+              _buildClose,
             ],
           ),
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 36, bottom: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildTitleBar,
-            _buildClose,
-          ],
         ),
-      ),
+        Expanded(child: _buildTable),
+        const Divider(height: 1, color: kPrimaryColor),
+        _buildTotal,
+      ],
     );
   }
 
