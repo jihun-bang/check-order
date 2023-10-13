@@ -1,7 +1,9 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/core/utils/extension.dart';
+import 'package:check_order/presentation/dialog/show_logo_message_toast.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
+import 'package:check_order/presentation/providers/order/order_provider.dart';
 import 'package:check_order/presentation/widgets/cart/cart_item.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:collection/collection.dart';
@@ -20,7 +22,19 @@ class CartDialog extends StatefulWidget {
 }
 
 class _CartDialogState extends State<CartDialog> {
-  final _provider = sl<CartProvider>();
+  final _cartProvider = sl<CartProvider>();
+  final _orderProvider = sl<OrderProvider>();
+
+  Future<void> _order() async {
+    final success = await _orderProvider.addOrder();
+    if (mounted) {
+      final message = success ? '주문이 접수 되었습니다!' : '주문을 실패했습니다.\직원 호출 부탁드립니다.';
+      if (success) {
+        Navigator.pop(context);
+      }
+      showLogoMessageToast(context: context, message: message);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,19 +105,19 @@ class _CartDialogState extends State<CartDialog> {
     return ListView.builder(
       itemBuilder: (_, index) {
         return CartItem(
-          cartItem: _provider.items[index],
+          cartItem: _cartProvider.items[index],
           onDeleteItem: (id) {
-            _provider.deleteCartItem(id);
+            _cartProvider.deleteCartItem(id);
           },
           onAddItem: (item) {
-            _provider.addCartItem(item);
+            _cartProvider.addCartItem(item);
           },
           onRemoveItem: (id) {
-            _provider.removeCartItem(id);
+            _cartProvider.removeCartItem(id);
           },
         );
       },
-      itemCount: _provider.items.length,
+      itemCount: _cartProvider.items.length,
     );
   }
 
@@ -127,7 +141,7 @@ class _CartDialogState extends State<CartDialog> {
                 ),
               ),
               Text(
-                _provider.items
+                _cartProvider.items
                     .map((e) => e.item.price * e.count)
                     .sum
                     .toCommaString(),
@@ -144,7 +158,9 @@ class _CartDialogState extends State<CartDialog> {
             label: '주문하기',
             color: kPrimaryColor,
             width: 332,
-            onTap: () {},
+            onTap: () async {
+              await _order();
+            },
           )
         ],
       ),

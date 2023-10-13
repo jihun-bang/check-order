@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-void showMyDialog({required BuildContext context, required Widget child}) {
+void showMyDialog({
+  required BuildContext context,
+  required Widget child,
+  double width = 1022,
+  double height = 660,
+}) {
   showDialog(
       context: context,
       builder: (_) {
