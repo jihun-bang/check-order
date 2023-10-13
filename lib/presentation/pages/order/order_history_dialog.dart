@@ -23,22 +23,25 @@ class _OrderHistoryDialogState extends State<OrderHistoryDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 36, bottom: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildTitleBar,
-              _buildClose,
-            ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 36, right: 36),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 36, bottom: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildTitleBar,
+                _buildClose,
+              ],
+            ),
           ),
-        ),
-        Expanded(child: _buildTable),
-        const Divider(height: 1, color: kPrimaryColor),
-        _buildTotal,
-      ],
+          Expanded(child: _buildTable),
+          const Divider(height: 1, color: kPrimaryColor),
+          _buildTotal,
+        ],
+      ),
     );
   }
 
