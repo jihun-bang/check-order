@@ -1,3 +1,5 @@
+import 'package:check_order/core/utils/logger.dart';
+
 import '../../../data/models/cart/cart_item.dart';
 import '../../../data/models/menu/menu_item.dart';
 
@@ -9,7 +11,7 @@ class CartUseCase {
     required MenuItemModel newItem,
   }) {
     final index = cartItems.indexWhere((item) => item.id == newItem.id);
-    if (index != 1) {
+    if (index != -1) {
       final cartItem = cartItems[index];
       cartItems[index] = cartItem.copyWith(count: cartItem.count + 1);
     } else {

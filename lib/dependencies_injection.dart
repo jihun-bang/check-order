@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 GetIt sl = GetIt.instance;
 
-Future<void> setupLocator() async {
+void setupLocator() {
   /// DataSource
 
   /// Repository
@@ -13,5 +13,5 @@ Future<void> setupLocator() async {
   sl.registerLazySingleton<CartUseCase>(() => CartUseCase());
 
   /// Provider
-  sl.registerFactory<CartProvider>(() => CartProvider(sl()));
+  sl.registerLazySingleton<CartProvider>(() => CartProvider(sl()));
 }

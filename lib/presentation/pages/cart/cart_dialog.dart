@@ -1,5 +1,11 @@
 import 'package:check_order/core/theme/app_theme.dart';
+import 'package:check_order/core/theme/color.dart';
+import 'package:check_order/presentation/providers/cart/cart_provider.dart';
+import 'package:check_order/presentation/widgets/cart/cart_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../dependencies_injection.dart';
 
 class CartDialog extends StatefulWidget {
   const CartDialog({
@@ -11,6 +17,8 @@ class CartDialog extends StatefulWidget {
 }
 
 class _CartDialogState extends State<CartDialog> {
+  final _provider = sl<CartProvider>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,6 +32,12 @@ class _CartDialogState extends State<CartDialog> {
       child: Column(
         children: [
           _buildTitleBar,
+          const Divider(
+            color: MyColor.gray_10,
+            thickness: 4,
+            height: 4,
+          ),
+          Expanded(child: _buildItems),
         ],
       ),
     );
@@ -62,5 +76,25 @@ class _CartDialogState extends State<CartDialog> {
         ],
       ),
     );
+  }
+
+  Widget get _buildItems {
+    return Consumer<CartProvider>(builder: (_, __, ___) {
+      return ListView.builder(
+        itemBuilder: (_, index) {
+          return CartItem(
+            cartItem: _provider.items[index],
+            onDeleteItem: (id) {},
+            onAddItem: (item) {
+              _provider.addCartItem(item);
+            },
+            onRemoveItem: (item) {
+              _provider.removeCartItem(item);
+            },
+          );
+        },
+        itemCount: _provider.items.length,
+      );
+    });
   }
 }

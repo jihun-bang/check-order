@@ -3,6 +3,7 @@ import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/dialog/add_cart_dialog.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
+import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
@@ -12,6 +13,8 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
+import '../../../dependencies_injection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -23,6 +26,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  final _cartProvider = sl<CartProvider>();
+
   late final ItemScrollController _itemScrollController;
   late final ItemPositionsListener _itemPositionsListener;
 
@@ -52,6 +57,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: AddCartDialog(
           item: item,
           onAddCart: () {
+            _cartProvider.addCartItem(item);
             Navigator.pop(context);
           },
         ));
