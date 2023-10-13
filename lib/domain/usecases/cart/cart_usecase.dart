@@ -12,7 +12,10 @@ class CartUseCase {
         cartItems.indexWhere((cartItem) => cartItem.item.id == newItem.id);
     if (index != -1) {
       final cartItem = cartItems[index];
-      cartItems[index] = cartItem.copyWith(count: cartItem.count + 1);
+      cartItems[index] = cartItem.copyWith(
+        count: cartItem.count + 1,
+        updatedAt: DateTime.now(),
+      );
     } else {
       cartItems.add(CartItemModel(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -32,7 +35,10 @@ class CartUseCase {
     if (index != -1) {
       final cartItem = cartItems[index];
       if (cartItem.count > 1) {
-        cartItems[index] = cartItem.copyWith(count: cartItem.count - 1);
+        cartItems[index] = cartItem.copyWith(
+          count: cartItem.count - 1,
+          updatedAt: DateTime.now(),
+        );
       }
     }
 
