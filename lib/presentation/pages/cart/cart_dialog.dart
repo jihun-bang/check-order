@@ -1,7 +1,10 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/theme/color.dart';
+import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:check_order/presentation/widgets/cart/cart_item.dart';
+import 'package:check_order/presentation/widgets/common/button.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,16 +32,22 @@ class _CartDialogState extends State<CartDialog> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        children: [
-          _buildTitleBar,
-          const Divider(
-            color: MyColor.gray_10,
-            thickness: 4,
-            height: 4,
-          ),
-          Expanded(child: _buildItems),
-        ],
+      child: Consumer<CartProvider>(
+        builder: (_, __, titleBar) {
+          return Column(
+            children: [
+              titleBar ?? const SizedBox(),
+              const Divider(
+                color: MyColor.gray_10,
+                thickness: 4,
+                height: 4,
+              ),
+              Expanded(child: _buildItems),
+              _buildOrder,
+            ],
+          );
+        },
+        child: _buildTitleBar,
       ),
     );
   }
@@ -79,24 +88,66 @@ class _CartDialogState extends State<CartDialog> {
   }
 
   Widget get _buildItems {
-    return Consumer<CartProvider>(builder: (_, __, ___) {
-      return ListView.builder(
-        itemBuilder: (_, index) {
-          return CartItem(
-            cartItem: _provider.items[index],
-            onDeleteItem: (id) {
-              _provider.deleteCartItem(id);
-            },
-            onAddItem: (item) {
-              _provider.addCartItem(item);
-            },
-            onRemoveItem: (id) {
-              _provider.removeCartItem(id);
-            },
-          );
-        },
-        itemCount: _provider.items.length,
-      );
-    });
+    return ListView.builder(
+      itemBuilder: (_, index) {
+        return CartItem(
+          cartItem: _provider.items[index],
+          onDeleteItem: (id) {
+            _provider.deleteCartItem(id);
+          },
+          onAddItem: (item) {
+            _provider.addCartItem(item);
+          },
+          onRemoveItem: (id) {
+            _provider.removeCartItem(id);
+          },
+        );
+      },
+      itemCount: _provider.items.length,
+    );
+  }
+
+  Widget get _buildOrder {
+    return Container(
+      height: 153,
+      color: const Color(0xFF2B2B2B),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                '합계',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text(
+                _provider.items
+                    .map((e) => e.item.price * e.count)
+                    .sum
+                    .toCommaString(),
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                ),
+              )
+            ],
+          ),
+          CheckOrderButton(
+            label: '주문하기',
+            color: kPrimaryColor,
+            width: 332,
+            onTap: () {},
+          )
+        ],
+      ),
+    );
   }
 }

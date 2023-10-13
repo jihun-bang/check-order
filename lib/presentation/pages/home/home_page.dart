@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             itemBuilder: (_, menuIndex) {
               final item = MenuItemModel(
                   id: '$index$menuIndex',
-                  name: _menuCategories[index],
+                  name: '${_menuCategories[index]} $menuIndex',
                   imageUrl: '',
                   price: 16900);
               return MenuCard(
