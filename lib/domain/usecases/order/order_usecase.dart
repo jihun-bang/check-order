@@ -9,9 +9,10 @@ class OrderUseCase {
       {required List<OrderItemModel> orderItems,
       required List<CartItemModel> cartItems}) {
     final newOrderItems = cartItems.map((e) => OrderItemModel(
-        id: e.id,
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
         item: e.item,
         updatedAt: DateTime.now(),
+        count: e.count,
         totalAmount: e.item.price * e.count));
     orderItems.addAll(newOrderItems);
     return orderItems;

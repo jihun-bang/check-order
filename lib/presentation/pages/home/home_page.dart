@@ -3,6 +3,7 @@ import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/dialog/add_cart_dialog.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
+import 'package:check_order/presentation/pages/order/order_history_dialog.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _showOrderHistory() {
-    showMyDialog(context: context, child: const SizedBox());
+    showMyDialog(context: context, child: const OrderHistoryDialog());
   }
 
   void _showEmployeeCall() {
