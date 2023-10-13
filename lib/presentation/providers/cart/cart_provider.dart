@@ -12,12 +12,17 @@ class CartProvider extends ChangeNotifier {
   CartProvider(this._useCase);
 
   void addCartItem(MenuItemModel newItem) {
-    _items = _useCase.addCartItem(cartItems: _items, newItem: newItem);
+    _items = _useCase.addCartItem(cartItems: items, newItem: newItem);
     notifyListeners();
   }
 
-  void removeCartItem(MenuItemModel item) {
-    _items = _useCase.removeCartItem(cartItems: _items, item: item);
+  void removeCartItem(String cartItemId) {
+    _items = _useCase.removeCartItem(cartItems: items, cartItemId: cartItemId);
+    notifyListeners();
+  }
+
+  void deleteCartItem(String cartItemId) {
+    _items = _useCase.deleteCartItem(cartItems: items, cartItemId: cartItemId);
     notifyListeners();
   }
 }

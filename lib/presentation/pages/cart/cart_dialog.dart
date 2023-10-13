@@ -84,12 +84,14 @@ class _CartDialogState extends State<CartDialog> {
         itemBuilder: (_, index) {
           return CartItem(
             cartItem: _provider.items[index],
-            onDeleteItem: (id) {},
+            onDeleteItem: (id) {
+              _provider.deleteCartItem(id);
+            },
             onAddItem: (item) {
               _provider.addCartItem(item);
             },
-            onRemoveItem: (item) {
-              _provider.removeCartItem(item);
+            onRemoveItem: (id) {
+              _provider.removeCartItem(id);
             },
           );
         },

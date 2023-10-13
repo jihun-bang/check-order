@@ -10,7 +10,7 @@ class CartItem extends StatelessWidget {
   final CartItemModel cartItem;
   final Function(String) onDeleteItem;
   final Function(MenuItemModel) onAddItem;
-  final Function(MenuItemModel) onRemoveItem;
+  final Function(String) onRemoveItem;
 
   const CartItem({
     super.key,
@@ -121,7 +121,7 @@ class CartItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8)),
               child: InkWell(
                 onTap: () {
-                  onAddItem.call(cartItem.item);
+                  onRemoveItem.call(cartItem.id);
                 },
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
@@ -146,14 +146,14 @@ class CartItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8)),
               child: InkWell(
                 onTap: () {
-                  onRemoveItem.call(cartItem.item);
+                  onAddItem.call(cartItem.item);
                 },
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
                     width: 42,
                     padding: const EdgeInsets.all(10),
                     child: const Icon(
-                      Icons.remove,
+                      Icons.add,
                       color: MyColor.gray_80,
                     )),
               ),
