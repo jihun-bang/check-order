@@ -1,7 +1,7 @@
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
-import 'package:check_order/presentation/dialog/add_cart_dialog.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
+import 'package:check_order/presentation/pages/cart/add_cart_dialog.dart';
 import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
 import 'package:check_order/presentation/pages/employee_call/employee_call_dialog.dart';
 import 'package:check_order/presentation/pages/order/order_history_dialog.dart';

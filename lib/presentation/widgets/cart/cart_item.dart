@@ -2,6 +2,7 @@ import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/data/models/cart/cart_item.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/presentation/widgets/common/counter.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:check_order/presentation/widgets/common/menu_image.dart';
 import 'package:flutter/material.dart';
@@ -109,57 +110,14 @@ class CartItem extends StatelessWidget {
     return Container(
       alignment: Alignment.bottomRight,
       margin: const EdgeInsets.only(right: 17, bottom: 12),
-      child: SizedBox(
-        width: 170,
-        height: 42,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Material(
-              color: MyColor.gray_10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: InkWell(
-                onTap: () {
-                  onRemoveItem.call(cartItem.id);
-                },
-                borderRadius: BorderRadius.circular(8),
-                child: Container(
-                    width: 42,
-                    padding: const EdgeInsets.all(10),
-                    child: const Icon(
-                      Icons.remove,
-                      color: MyColor.gray_80,
-                    )),
-              ),
-            ),
-            Text(
-              '${cartItem.count.toCommaString()}개',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Material(
-              color: MyColor.gray_10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: InkWell(
-                onTap: () {
-                  onAddItem.call(cartItem.item);
-                },
-                borderRadius: BorderRadius.circular(8),
-                child: Container(
-                    width: 42,
-                    padding: const EdgeInsets.all(10),
-                    child: const Icon(
-                      Icons.add,
-                      color: MyColor.gray_80,
-                    )),
-              ),
-            ),
-          ],
-        ),
+      child: Counter(
+        value: cartItem.count,
+        onPlus: () {
+          onAddItem.call(cartItem.item);
+        },
+        onMinus: () {
+          onRemoveItem.call(cartItem.id);
+        },
       ),
     );
   }
