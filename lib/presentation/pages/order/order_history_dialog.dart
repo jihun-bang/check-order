@@ -1,11 +1,9 @@
 import 'package:check_order/core/theme/app_theme.dart';
-import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/presentation/providers/order/order_provider.dart';
-import 'package:check_order/presentation/widgets/common/empty_box.dart';
+import 'package:check_order/presentation/widgets/common/dialog_title.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../dependencies_injection.dart';
 
@@ -27,52 +25,15 @@ class _OrderHistoryDialogState extends State<OrderHistoryDialog> {
       padding: const EdgeInsets.only(left: 36, right: 36),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 36, bottom: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildTitleBar,
-                _buildClose,
-              ],
-            ),
+          const Padding(
+            padding: EdgeInsets.only(top: 36, bottom: 8),
+            child: DialogTitle(title: '주문 내역'),
           ),
           Expanded(child: _buildTable),
           const Divider(height: 1, color: kPrimaryColor),
           _buildTotal,
         ],
       ),
-    );
-  }
-
-  Widget get _buildClose {
-    return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      constraints: const BoxConstraints(),
-      iconSize: 36,
-      icon: const Icon(Icons.close, color: MyColor.gray_30),
-    );
-  }
-
-  Widget get _buildTitleBar {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          'assets/icons/icon_logo.svg',
-          width: 26.67,
-          height: 21.33,
-        ),
-        const EmptyBox(width: 6.67),
-        const Text(
-          '주문내역',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
     );
   }
 
