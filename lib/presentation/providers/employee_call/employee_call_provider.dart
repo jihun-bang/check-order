@@ -54,4 +54,13 @@ class EmployeeCallProvider extends ChangeNotifier {
     _selectedItems = _useCase.deleteItem(items: selectedItems, itemId: itemId);
     notifyListeners();
   }
+
+  Future<bool> call() async {
+    final result = await _useCase.call(items: selectedItems);
+    if (result) {
+      _selectedItems.clear();
+      notifyListeners();
+    }
+    return result;
+  }
 }

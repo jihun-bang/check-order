@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
+import 'package:check_order/presentation/providers/employee_call/employee_call_provider.dart';
 import 'package:check_order/presentation/providers/order/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider<CartProvider>(create: (_) => sl()),
             ChangeNotifierProvider<OrderProvider>(create: (_) => sl()),
+            ChangeNotifierProvider<EmployeeCallProvider>(create: (_) => sl()),
           ],
           child: MaterialApp.router(
             title: 'Check',

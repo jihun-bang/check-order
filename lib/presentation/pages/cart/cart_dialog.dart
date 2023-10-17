@@ -29,7 +29,7 @@ class _CartDialogState extends State<CartDialog> {
     final success =
         await _orderProvider.addOrder(cartItems: _cartProvider.items);
     if (mounted) {
-      final message = success ? '주문이 접수 되었습니다!' : '주문을 실패했습니다.\직원 호출 부탁드립니다.';
+      final message = success ? '주문이 접수 되었습니다!' : '주문을 실패했습니다.\n직원 호출 부탁드립니다.';
       if (success) {
         Navigator.pop(context);
       }

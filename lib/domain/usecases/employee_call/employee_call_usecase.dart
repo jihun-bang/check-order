@@ -50,4 +50,8 @@ class EmployeeCallUseCase {
 
     return items;
   }
+
+  Future<bool> call({required List<EmployeeCallItemModel> items}) {
+    return Future(() => true);
+  }
 }

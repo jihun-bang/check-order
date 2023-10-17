@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../dependencies_injection.dart';
 import '../../widgets/common/dialog_title.dart';
+import 'employee_call_menu_dialog.dart';
 
 class EmployeeCallDialog extends StatefulWidget {
   const EmployeeCallDialog({
@@ -17,34 +18,28 @@ class EmployeeCallDialog extends StatefulWidget {
 }
 
 class _EmployeeCallDialogState extends State<EmployeeCallDialog> {
-  late EmployeeCallProvider _provider;
+  final _provider = sl<EmployeeCallProvider>();
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<EmployeeCallProvider>(
-      create: (_) {
-        _provider = sl<EmployeeCallProvider>();
-        return _provider;
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(left: 36, right: 36, bottom: 36),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 36),
-              child: DialogTitle(title: '직원 호출'),
+    return Padding(
+      padding: const EdgeInsets.only(left: 36, right: 36, bottom: 36),
+      child: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 36),
+            child: DialogTitle(title: '직원 호출'),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 30),
+            child: Divider(
+              thickness: 1,
+              height: 1,
+              color: MyColor.gray_30,
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 30),
-              child: Divider(
-                thickness: 1,
-                height: 1,
-                color: MyColor.gray_30,
-              ),
-            ),
-            Expanded(child: _buildMenuItems),
-          ],
-        ),
+          ),
+          Expanded(child: _buildMenuItems),
+        ],
       ),
     );
   }
@@ -68,6 +63,18 @@ class _EmployeeCallDialogState extends State<EmployeeCallDialog> {
             isSelected: _provider.isSelectedItem(item.id),
             onTap: () {
               _provider.addItem(item);
+              showDialog(
+                  barrierColor: Colors.transparent,
+                  context: context,
+                  barrierDismissible: true,
+                  useSafeArea: false,
+                  builder: (_) {
+                    return const Dialog(
+                      alignment: Alignment.centerRight,
+                      insetPadding: EdgeInsets.only(right: 129),
+                      child: EmployeeCallMenuDialog(),
+                    );
+                  });
             },
           );
         },
