@@ -25,4 +25,9 @@ class CartProvider extends ChangeNotifier {
     _items = _useCase.deleteCartItem(cartItems: items, cartItemId: cartItemId);
     notifyListeners();
   }
+
+  void clear() {
+    _items.clear();
+    notifyListeners();
+  }
 }
