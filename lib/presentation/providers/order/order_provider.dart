@@ -16,6 +16,7 @@ class OrderProvider extends ChangeNotifier {
 
   Future<bool> addOrder({required List<CartItemModel> cartItems}) async {
     final success = await _useCase.order(cartItems: cartItems);
+
     if (success) {
       _items = _useCase.addItems(orderItems: items, cartItems: cartItems);
       sl<CartProvider>().clear();

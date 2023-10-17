@@ -142,10 +142,7 @@ class _CartDialogState extends State<CartDialog> {
                 ),
               ),
               Text(
-                _cartProvider.items
-                    .map((e) => e.item.price * e.count)
-                    .sum
-                    .toCommaString(),
+                '${_cartProvider.items.map((e) => e.item.price * e.count).sum.toCommaString()}원',
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   color: Colors.white,
@@ -159,6 +156,7 @@ class _CartDialogState extends State<CartDialog> {
             label: '주문하기',
             color: kPrimaryColor,
             width: 332,
+            enable: _cartProvider.items.isNotEmpty,
             onTap: () async {
               await _order();
             },

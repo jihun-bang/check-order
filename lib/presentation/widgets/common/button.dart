@@ -1,3 +1,4 @@
+import 'package:check_order/core/theme/color.dart';
 import 'package:flutter/material.dart';
 
 class CheckOrderButton extends StatefulWidget {
@@ -50,6 +51,7 @@ class _CheckOrderButtonState extends State<CheckOrderButton> {
       style: ElevatedButton.styleFrom(
           elevation: 0,
           fixedSize: Size(widget.width, widget.height),
+          disabledBackgroundColor: MyColor.gray_30,
           backgroundColor: widget.color),
       child: Center(
         child: _isLoading
