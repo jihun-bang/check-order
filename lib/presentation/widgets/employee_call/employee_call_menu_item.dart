@@ -1,3 +1,4 @@
+import 'package:check_order/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeCallMenuItem extends StatelessWidget {
@@ -17,7 +18,7 @@ class EmployeeCallMenuItem extends StatelessWidget {
     return OutlinedButton(
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
-          fixedSize: Size(145, 100),
+          fixedSize: const Size(145, 100),
           alignment: Alignment.center,
           elevation: isSelected ? 4 : 0,
           shape: RoundedRectangleBorder(
@@ -26,9 +27,10 @@ class EmployeeCallMenuItem extends StatelessWidget {
                 : const BorderSide(),
             borderRadius: BorderRadius.circular(12),
           ),
-          padding: EdgeInsets.all(8),
-          shadowColor: isSelected ? Color(0x33000000) : null,
-          foregroundColor: isSelected ? Colors.white : Color(0xFF2B2B2B),
+          padding: const EdgeInsets.all(8),
+          shadowColor: isSelected ? const Color(0x33000000) : null,
+          backgroundColor: isSelected ? kPrimaryColor : Colors.white,
+          foregroundColor: isSelected ? Colors.white : const Color(0xFF2B2B2B),
           textStyle: TextStyle(
             fontSize: 20,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
