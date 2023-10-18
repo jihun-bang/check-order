@@ -14,6 +14,7 @@ import 'package:check_order/presentation/widgets/home/munu_category_indicator.da
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../dependencies_injection.dart';
 
@@ -103,9 +104,13 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: kPrimaryColor,
           child: Padding(
             padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset(
-              'assets/icons/icon_cart.svg',
-            ),
+            child: Consumer<CartProvider>(builder: (_, provider, ___) {
+              return SvgPicture.asset(
+                'assets/icons/icon_cart${provider.items.isNotEmpty ? '_badge' : ''}.svg',
+                width: 52,
+                height: 52,
+              );
+            }),
           ),
           onPressed: () {
             _showCart();
