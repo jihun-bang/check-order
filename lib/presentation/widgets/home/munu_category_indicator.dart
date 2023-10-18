@@ -69,31 +69,28 @@ class _MenuCategoryIndicatorState extends State<MenuCategoryIndicator> {
   Widget buildText(int index) {
     final isSelected = widget.selectedIndex == index;
 
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          calculateIndicatorPosition(index);
-        });
-        widget.onTap.call(index);
-      },
-      child: Container(
-        padding: const EdgeInsets.only(bottom: 12, right: 48),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            if (isSelected) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                calculateIndicatorPosition(index);
-              });
-            }
+    return Container(
+      padding: const EdgeInsets.only(bottom: 12, right: 48),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          if (isSelected) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              calculateIndicatorPosition(index);
+            });
+          }
 
-            return Text(widget.categories[index],
+          return InkWell(
+            onTap: () {
+              widget.onTap.call(index);
+            },
+            child: Text(widget.categories[index],
                 style: TextStyle(
                   color: isSelected ? kPrimaryColor : null,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                ));
-          },
-        ),
+                )),
+          );
+        },
       ),
     );
   }
@@ -121,7 +118,7 @@ class _MenuCategoryIndicatorState extends State<MenuCategoryIndicator> {
 
     setState(() {
       indicatorLeft = leftPosition;
-      indicatorWidth = textPainter.width - 2;
+      indicatorWidth = textPainter.width - 4;
     });
   }
 }
