@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           _logo,
-          const EmptyBox(height: 39),
+          const EmptyBox(height: 26),
           ..._menuCategories.mapIndexed(
             (index, item) => MenuListItem(
               label: item,
@@ -156,21 +156,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _logo {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset('assets/icons/icon_logo.svg'),
-        const EmptyBox(width: 12),
-        const Text(
-          'CHECK',
-          style: TextStyle(
-            color: Color(0xFFFF5D02),
-            fontSize: 20,
-            fontFamily: 'Aldrich',
-            letterSpacing: -0.60,
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 13),
+      child: SvgPicture.asset('assets/icons/icon_logo_h.svg'),
     );
   }
 
