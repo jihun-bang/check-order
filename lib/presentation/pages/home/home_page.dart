@@ -14,7 +14,6 @@ import 'package:check_order/presentation/widgets/home/munu_category_indicator.da
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../../dependencies_injection.dart';
 
@@ -27,30 +26,17 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomePageState extends State<HomePage> {
   final _cartProvider = sl<CartProvider>();
 
-  late final ItemScrollController _itemScrollController;
-  late final ItemPositionsListener _itemPositionsListener;
-
-  int _menuItemsIndex = 0;
+  late final PageController _pageController;
   static const _menuCategories = ['국물요리', '튀김요리', '꼬치구이', '술&음료'];
-
-  void _menuItemsHandler() {
-    final index =
-        _itemPositionsListener.itemPositions.value.firstOrNull?.index ?? 0;
-    if (_menuItemsIndex != index) {
-      setState(() {
-        _menuItemsIndex = index;
-      });
-    }
-  }
+  int get _page =>
+      _pageController.hasClients ? _pageController.page?.toInt() ?? 0 : 0;
 
   Future<void> _scrollToItem(int index) async {
-    await _itemScrollController.scrollTo(
-        index: index,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOutCubic);
+    _pageController.jumpToPage(index);
+    setState(() {});
   }
 
   void _showAddCart(MenuItemModel item) {
@@ -90,9 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _itemScrollController = ItemScrollController();
-    _itemPositionsListener = ItemPositionsListener.create();
-    _itemPositionsListener.itemPositions.addListener(_menuItemsHandler);
+    _pageController = PageController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {});
   }
 
@@ -144,7 +128,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ..._menuCategories.mapIndexed(
             (index, item) => MenuListItem(
               label: item,
-              enabled: _menuItemsIndex == index,
+              enabled: _page == index,
               onTap: () async {
                 await _scrollToItem(index);
               },
@@ -203,13 +187,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget get _menuItems {
     return SizedBox(
       width: 1000,
-      child: ScrollablePositionedList.builder(
-        itemScrollController: _itemScrollController,
-        itemPositionsListener: _itemPositionsListener,
+      child: PageView.builder(
+        controller: _pageController,
+        scrollDirection: Axis.vertical,
+        physics: const NeverScrollableScrollPhysics(),
+        pageSnapping: false,
         itemBuilder: (_, index) {
           return GridView.builder(
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.fromLTRB(64, 24, 64, 24),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               childAspectRatio: 200 / 280,
@@ -217,7 +202,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               crossAxisSpacing: 24,
               mainAxisSpacing: 24,
             ),
-            itemCount: 6,
+            itemCount: 10,
             itemBuilder: (_, menuIndex) {
               final item = MenuItemModel(
                   id: '$index$menuIndex',
@@ -234,7 +219,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           );
         },
         itemCount: _menuCategories.length,
-        padding: const EdgeInsets.only(bottom: 70),
       ),
     );
   }
@@ -243,7 +227,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.only(top: 62, left: 48),
       child: MenuCategoryIndicator(
-        selectedIndex: _menuItemsIndex,
+        selectedIndex: _page,
         categories: _menuCategories,
         onTap: (index) async {
           await _scrollToItem(index);
