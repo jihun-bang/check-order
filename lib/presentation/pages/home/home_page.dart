@@ -156,9 +156,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _logo {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 13),
-      child: SvgPicture.asset('assets/icons/icon_logo_h.svg'),
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _pageController.jumpToPage(0);
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 13),
+        child: SvgPicture.asset('assets/icons/icon_logo_h.svg'),
+      ),
     );
   }
 
