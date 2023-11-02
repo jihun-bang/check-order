@@ -32,7 +32,6 @@ class _MenuCategoryIndicatorState extends State<MenuCategoryIndicator> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 904,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [

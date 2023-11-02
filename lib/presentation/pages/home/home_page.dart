@@ -1,4 +1,5 @@
 import 'package:check_order/core/theme/app_theme.dart';
+import 'package:check_order/core/utils/util.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/add_cart_dialog.dart';
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   final _cartProvider = sl<CartProvider>();
 
   late final PageController _pageController;
-  static const _menuCategories = ['국물요리', '튀김요리', '꼬치구이', '술&음료'];
+  List<String> _menuCategories = [];
   int get _page =>
       _pageController.hasClients ? _pageController.page?.toInt() ?? 0 : 0;
 
@@ -78,18 +79,26 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     _pageController = PageController();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {});
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final List<dynamic> categories =
+          (await Util.loadJsonFile('dummy_categories'))['categories'];
+      _menuCategories = categories.map((item) => item.toString()).toList();
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_menuCategories.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
     return Scaffold(
         backgroundColor: const Color(0xFFFAF9FF),
         body: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _menu,
-            _content,
+            Expanded(child: _content),
           ],
         ),
         floatingActionButton: _cart);
@@ -130,16 +139,22 @@ class _HomePageState extends State<HomePage> {
         children: [
           _logo,
           const EmptyBox(height: 26),
-          ..._menuCategories.mapIndexed(
-            (index, item) => MenuListItem(
-              label: item,
-              enabled: _page == index,
-              onTap: () async {
-                await _scrollToItem(index);
-              },
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                  children: _menuCategories
+                      .mapIndexed(
+                        (index, item) => MenuListItem(
+                          label: item,
+                          enabled: _page == index,
+                          onTap: () async {
+                            await _scrollToItem(index);
+                          },
+                        ),
+                      )
+                      .toList()),
             ),
           ),
-          const Spacer(),
           CheckOrderButton(
             label: '주문 내역',
             color: const Color(0xFF2B2B2B),
@@ -178,7 +193,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _menuIndicator,
+        _categoryIndicator,
         Expanded(child: _menuItems),
       ],
     );
@@ -223,15 +238,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget get _menuIndicator {
-    return Padding(
-      padding: const EdgeInsets.only(top: 62, left: 48),
-      child: MenuCategoryIndicator(
-        selectedIndex: _page,
-        categories: _menuCategories,
-        onTap: (index) async {
-          await _scrollToItem(index);
-        },
+  Widget get _categoryIndicator {
+    return Container(
+      margin: const EdgeInsets.only(right: 48),
+      child: ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.only(top: 62, left: 48),
+          scrollDirection: Axis.horizontal,
+          child: MenuCategoryIndicator(
+            selectedIndex: _page,
+            categories: _menuCategories,
+            onTap: (index) async {
+              await _scrollToItem(index);
+            },
+          ),
+        ),
       ),
     );
   }
