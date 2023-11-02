@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -47,32 +46,43 @@ class MenuCard extends StatelessWidget {
                   width: 176,
                   height: 176,
                   child: item.imageUrl.isNotEmpty
-                      ? CachedNetworkImage(imageUrl: item.imageUrl)
+
+                      /// TODO Cached 처리
+                      ? Image.asset(
+                          item.imageUrl,
+                          fit: BoxFit.cover,
+                        )
                       : Image.asset('assets/images/img_test_menu.png')),
             ),
             const EmptyBox(height: 20),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Text(
+                      item.name,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
                   ),
-                ),
-                const EmptyBox(height: 8),
-                Text(
-                  '${item.price.toCommaString()}원',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                  const EmptyBox(height: 8),
+                  Text(
+                    '${item.price.toCommaString()}원',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

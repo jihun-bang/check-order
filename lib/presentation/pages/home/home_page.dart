@@ -1,5 +1,4 @@
 import 'package:check_order/core/theme/app_theme.dart';
-import 'package:check_order/core/utils/util.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/add_cart_dialog.dart';
@@ -7,6 +6,7 @@ import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
 import 'package:check_order/presentation/pages/employee_call/employee_call_dialog.dart';
 import 'package:check_order/presentation/pages/order/order_history_dialog.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
+import 'package:check_order/presentation/providers/home/menu_provider.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
@@ -30,9 +30,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _cartProvider = sl<CartProvider>();
-
+  final _menuProvider = sl<MenuProvider>();
   late final PageController _pageController;
-  List<String> _menuCategories = [];
+
+  List<String> get _menuCategories => _menuProvider.categories;
+  List<MenuItemModel> get _items => _menuProvider.items;
   int get _page =>
       _pageController.hasClients ? _pageController.page?.toInt() ?? 0 : 0;
 
@@ -79,28 +81,24 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     _pageController = PageController();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final List<dynamic> categories =
-          (await Util.loadJsonFile('dummy_categories'))['categories'];
-      _menuCategories = categories.map((item) => item.toString()).toList();
-      setState(() {});
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_menuCategories.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
-    }
     return Scaffold(
         backgroundColor: const Color(0xFFFAF9FF),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _menu,
-            Expanded(child: _content),
-          ],
-        ),
+        body: Consumer<MenuProvider>(builder: (_, __, ___) {
+          if (_menuCategories.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _menu,
+              Expanded(child: _content),
+            ],
+          );
+        }),
         floatingActionButton: _cart);
   }
 
@@ -207,7 +205,9 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
         pageSnapping: false,
-        itemBuilder: (_, index) {
+        itemBuilder: (_, categoryIndex) {
+          final items = _items
+              .where((item) => item.category == _menuCategories[categoryIndex]);
           return GridView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.fromLTRB(64, 24, 64, 24),
@@ -217,13 +217,9 @@ class _HomePageState extends State<HomePage> {
               crossAxisSpacing: 24,
               mainAxisSpacing: 24,
             ),
-            itemCount: 10,
+            itemCount: items.length,
             itemBuilder: (_, menuIndex) {
-              final item = MenuItemModel(
-                  id: '$index$menuIndex',
-                  name: '${_menuCategories[index]} $menuIndex',
-                  imageUrl: '',
-                  price: 16900);
+              final item = items.elementAt(menuIndex);
               return MenuCard(
                 item: item,
                 onTap: () {

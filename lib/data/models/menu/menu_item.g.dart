@@ -11,11 +11,17 @@ abstract class _$MenuItemModelCWProxy {
 
   MenuItemModel name(String name);
 
+  MenuItemModel category(String category);
+
   MenuItemModel imageUrl(String imageUrl);
 
   MenuItemModel price(int price);
 
   MenuItemModel description(String description);
+
+  MenuItemModel isPopular(bool isPopular);
+
+  MenuItemModel isSoldOut(bool isSoldOut);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MenuItemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -26,9 +32,12 @@ abstract class _$MenuItemModelCWProxy {
   MenuItemModel call({
     String? id,
     String? name,
+    String? category,
     String? imageUrl,
     int? price,
     String? description,
+    bool? isPopular,
+    bool? isSoldOut,
   });
 }
 
@@ -45,6 +54,9 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
   MenuItemModel name(String name) => this(name: name);
 
   @override
+  MenuItemModel category(String category) => this(category: category);
+
+  @override
   MenuItemModel imageUrl(String imageUrl) => this(imageUrl: imageUrl);
 
   @override
@@ -53,6 +65,12 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
   @override
   MenuItemModel description(String description) =>
       this(description: description);
+
+  @override
+  MenuItemModel isPopular(bool isPopular) => this(isPopular: isPopular);
+
+  @override
+  MenuItemModel isSoldOut(bool isSoldOut) => this(isSoldOut: isSoldOut);
 
   @override
 
@@ -65,9 +83,12 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
   MenuItemModel call({
     Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
+    Object? category = const $CopyWithPlaceholder(),
     Object? imageUrl = const $CopyWithPlaceholder(),
     Object? price = const $CopyWithPlaceholder(),
     Object? description = const $CopyWithPlaceholder(),
+    Object? isPopular = const $CopyWithPlaceholder(),
+    Object? isSoldOut = const $CopyWithPlaceholder(),
   }) {
     return MenuItemModel(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -78,6 +99,10 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
+      category: category == const $CopyWithPlaceholder() || category == null
+          ? _value.category
+          // ignore: cast_nullable_to_non_nullable
+          : category as String,
       imageUrl: imageUrl == const $CopyWithPlaceholder() || imageUrl == null
           ? _value.imageUrl
           // ignore: cast_nullable_to_non_nullable
@@ -91,6 +116,14 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
               ? _value.description
               // ignore: cast_nullable_to_non_nullable
               : description as String,
+      isPopular: isPopular == const $CopyWithPlaceholder() || isPopular == null
+          ? _value.isPopular
+          // ignore: cast_nullable_to_non_nullable
+          : isPopular as bool,
+      isSoldOut: isSoldOut == const $CopyWithPlaceholder() || isSoldOut == null
+          ? _value.isSoldOut
+          // ignore: cast_nullable_to_non_nullable
+          : isSoldOut as bool,
     );
   }
 }
@@ -109,16 +142,22 @@ MenuItemModel _$MenuItemModelFromJson(Map<String, dynamic> json) =>
     MenuItemModel(
       id: json['id'] as String,
       name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String,
+      category: json['category'] as String,
+      imageUrl: json['image_url'] as String,
       price: json['price'] as int,
       description: json['description'] as String? ?? '',
+      isPopular: json['isPopular'] as bool? ?? false,
+      isSoldOut: json['isSoldOut'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$MenuItemModelToJson(MenuItemModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'imageUrl': instance.imageUrl,
+      'category': instance.category,
+      'image_url': instance.imageUrl,
       'price': instance.price,
       'description': instance.description,
+      'isPopular': instance.isPopular,
+      'isSoldOut': instance.isSoldOut,
     };

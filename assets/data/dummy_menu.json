@@ -1,8 +1,258 @@
 [
   {
-    "name": "금게조게술찜",
+    "id": "0",
+    "name": "모듬꼬치6종",
+    "price": 17000,
+    "image_url": "assets/images/menu/모듬꼬치6종.png",
+    "category": "꼬치",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "1",
+    "name": "야끼교자",
+    "price": 10500,
+    "image_url": "assets/images/menu/야끼교자.png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "2",
+    "name": "우삼겹야끼소바",
+    "price": 13900,
+    "image_url": "assets/images/menu/우삼겹야끼소바.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "3",
+    "name": "오이무침",
+    "price": 5900,
+    "image_url": "assets/images/menu/오이무침.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "4",
+    "name": "탓치모츠나베",
+    "price": 24900,
+    "image_url": "assets/images/menu/탓치모츠나베.png",
+    "category": "나베",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "5",
+    "name": "오뎅모리아와세",
+    "price": 15900,
+    "image_url": "assets/images/menu/오뎅모리아와세.png",
+    "category": "나베",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "6",
+    "name": "금게조개술찜",
     "price": 16900,
-    "image_url": "",
-    "category": "국물요리"
+    "image_url": "assets/images/menu/금게조개술찜.png",
+    "category": "나베",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "7",
+    "name": "스지아롱사태",
+    "price": 15900,
+    "image_url": "assets/images/menu/스지아롱사태.png",
+    "category": "나베",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "8",
+    "name": "김치가츠나베",
+    "price": 15900,
+    "image_url": "assets/images/menu/김치가츠나베.png",
+    "category": "나베",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "9",
+    "name": "트러플바질크림파스타",
+    "price": 14900,
+    "image_url": "assets/images/menu/트러플바질크림파스타.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "10",
+    "name": "골뱅이새우파스타",
+    "price": 14900,
+    "image_url": "assets/images/menu/골뱅이새우파스타.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "11",
+    "name": "돈페이야끼(오사카풍오믈렛)",
+    "price": 14900,
+    "image_url": "assets/images/menu/돈페이야끼(오사카풍오믈렛).png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "12",
+    "name": "매콤야끼우동",
+    "price": 13900,
+    "image_url": "assets/images/menu/매콤야끼우동.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "13",
+    "name": "멘치카츠",
+    "price": 9900,
+    "image_url": "assets/images/menu/멘치카츠.png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "14",
+    "name": "치킨난반",
+    "price": 9900,
+    "image_url": "assets/images/menu/치킨난반.png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "15",
+    "name": "에비텐동(새우튀김덮밥)",
+    "price": 11900,
+    "image_url": "assets/images/menu/에비텐동(새우튀김덮밥).png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "16",
+    "name": "라구포테이토(미트소스감튀)",
+    "price": 13900,
+    "image_url": "assets/images/menu/라구포테이토(미트소스감튀).png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "17",
+    "name": "새우튀김",
+    "price": 13900,
+    "image_url": "assets/images/menu/새우튀김.png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "18",
+    "name": "멘보샤",
+    "price": 9900,
+    "image_url": "assets/images/menu/멘보샤.png",
+    "category": "튀김",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "19",
+    "name": "콘육회",
+    "price": 16900,
+    "image_url": "assets/images/menu/콘육회.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "20",
+    "name": "명란구이감태",
+    "price": 12900,
+    "image_url": "assets/images/menu/명란구이감태.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "21",
+    "name": "명란마요크림치즈",
+    "price": 12900,
+    "image_url": "assets/images/menu/명란마요크림치즈.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "22",
+    "name": "시저샐러드",
+    "price": 12900,
+    "image_url": "assets/images/menu/시저샐러드.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "23",
+    "name": "포테토사라다",
+    "price": 9900,
+    "image_url": "assets/images/menu/포테토사라다.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "24",
+    "name": "이까타래야끼",
+    "price": 13900,
+    "image_url": "assets/images/menu/이까타래야끼.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "25",
+    "name": "감바스",
+    "price": 13900,
+    "image_url": "assets/images/menu/감바스.png",
+    "category": "볶음/파스타",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "26",
+    "name": "리얼팝콘",
+    "price": 8900,
+    "image_url": "assets/images/menu/리얼팝콘.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "27",
+    "name": "복숭아셔벗",
+    "price": 4900,
+    "image_url": "assets/images/menu/복숭아셔벗.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "28",
+    "name": "딸기셔벗",
+    "price": 4900,
+    "image_url": "assets/images/menu/딸기셔벗.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "29",
+    "name": "마시멜로우",
+    "price": 4900,
+    "image_url": "assets/images/menu/마시멜로우.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "30",
+    "name": "유자방울",
+    "price": 4900,
+    "image_url": "assets/images/menu/유자방울.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+  },
+  {
+    "id": "31",
+    "name": "크림치즈두부",
+    "price": 7900,
+    "image_url": "assets/images/menu/크림치즈두부.png",
+    "category": "진미/디저트",
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
   }
 ]
