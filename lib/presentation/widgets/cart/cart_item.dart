@@ -63,7 +63,8 @@ class CartItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 12, right: 12),
                 child: MenuImage(
-                  imageUrl: item.imageUrl,
+                  imageUrl:
+                      'assets/images/menu/60/image ${int.parse(item.id) + 1}.png',
                   width: 60,
                   height: 60,
                 ),

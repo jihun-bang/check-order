@@ -38,7 +38,9 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    - assets/images/menu/
+    - assets/images/menu/60/
+    - assets/images/menu/176/
+    - assets/images/menu/600/
     - assets/data/
   fonts:
     - family: Pretendard

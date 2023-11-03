@@ -40,7 +40,7 @@ class _AddCartDialogState extends State<AddCartDialog> {
   }
 
   Widget get _buildImage {
-    final imageUrl = widget.item.imageUrl;
+    final imageUrl = widget.item.imageUrl600;
 
     return Padding(
       padding: const EdgeInsets.all(30),
@@ -55,7 +55,7 @@ class _AddCartDialogState extends State<AddCartDialog> {
                     fit: BoxFit.cover,
                   )
                 : Image.asset(
-                    'assets/images/img_test_menu.png',
+                    'assets/images/menu/600/image ${int.parse(widget.item.id) + 1}.png',
                     fit: BoxFit.cover,
                   )),
       ),

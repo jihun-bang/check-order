@@ -45,14 +45,17 @@ class MenuCard extends StatelessWidget {
               child: SizedBox(
                   width: 176,
                   height: 176,
-                  child: item.imageUrl.isNotEmpty
+                  child: item.imageUrl176.isNotEmpty
 
                       /// TODO Cached 처리
                       ? Image.asset(
-                          item.imageUrl,
+                          item.imageUrl176,
                           fit: BoxFit.cover,
                         )
-                      : Image.asset('assets/images/img_test_menu.png')),
+                      : Image.asset(
+                          'assets/images/menu/176/image ${int.parse(item.id) + 1}.png',
+                          fit: BoxFit.cover,
+                        )),
             ),
             const EmptyBox(height: 20),
             Expanded(

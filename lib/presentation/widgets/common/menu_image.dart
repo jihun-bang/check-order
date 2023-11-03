@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class MenuImage extends StatelessWidget {
@@ -21,8 +20,8 @@ class MenuImage extends StatelessWidget {
         width: width,
         height: height,
         child: imageUrl.isNotEmpty
-            ? CachedNetworkImage(imageUrl: imageUrl)
-            : Image.asset('assets/images/img_test_menu.png'),
+            ? Image.asset(imageUrl, fit: BoxFit.cover)
+            : Image.asset('assets/images/img_test_menu.png', fit: BoxFit.cover),
       ),
     );
   }

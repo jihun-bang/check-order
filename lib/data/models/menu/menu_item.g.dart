@@ -13,7 +13,11 @@ abstract class _$MenuItemModelCWProxy {
 
   MenuItemModel category(String category);
 
-  MenuItemModel imageUrl(String imageUrl);
+  MenuItemModel imageUrl60(String imageUrl60);
+
+  MenuItemModel imageUrl176(String imageUrl176);
+
+  MenuItemModel imageUrl600(String imageUrl600);
 
   MenuItemModel price(int price);
 
@@ -33,7 +37,9 @@ abstract class _$MenuItemModelCWProxy {
     String? id,
     String? name,
     String? category,
-    String? imageUrl,
+    String? imageUrl60,
+    String? imageUrl176,
+    String? imageUrl600,
     int? price,
     String? description,
     bool? isPopular,
@@ -57,7 +63,15 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
   MenuItemModel category(String category) => this(category: category);
 
   @override
-  MenuItemModel imageUrl(String imageUrl) => this(imageUrl: imageUrl);
+  MenuItemModel imageUrl60(String imageUrl60) => this(imageUrl60: imageUrl60);
+
+  @override
+  MenuItemModel imageUrl176(String imageUrl176) =>
+      this(imageUrl176: imageUrl176);
+
+  @override
+  MenuItemModel imageUrl600(String imageUrl600) =>
+      this(imageUrl600: imageUrl600);
 
   @override
   MenuItemModel price(int price) => this(price: price);
@@ -84,7 +98,9 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
     Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? category = const $CopyWithPlaceholder(),
-    Object? imageUrl = const $CopyWithPlaceholder(),
+    Object? imageUrl60 = const $CopyWithPlaceholder(),
+    Object? imageUrl176 = const $CopyWithPlaceholder(),
+    Object? imageUrl600 = const $CopyWithPlaceholder(),
     Object? price = const $CopyWithPlaceholder(),
     Object? description = const $CopyWithPlaceholder(),
     Object? isPopular = const $CopyWithPlaceholder(),
@@ -103,10 +119,21 @@ class _$MenuItemModelCWProxyImpl implements _$MenuItemModelCWProxy {
           ? _value.category
           // ignore: cast_nullable_to_non_nullable
           : category as String,
-      imageUrl: imageUrl == const $CopyWithPlaceholder() || imageUrl == null
-          ? _value.imageUrl
-          // ignore: cast_nullable_to_non_nullable
-          : imageUrl as String,
+      imageUrl60:
+          imageUrl60 == const $CopyWithPlaceholder() || imageUrl60 == null
+              ? _value.imageUrl60
+              // ignore: cast_nullable_to_non_nullable
+              : imageUrl60 as String,
+      imageUrl176:
+          imageUrl176 == const $CopyWithPlaceholder() || imageUrl176 == null
+              ? _value.imageUrl176
+              // ignore: cast_nullable_to_non_nullable
+              : imageUrl176 as String,
+      imageUrl600:
+          imageUrl600 == const $CopyWithPlaceholder() || imageUrl600 == null
+              ? _value.imageUrl600
+              // ignore: cast_nullable_to_non_nullable
+              : imageUrl600 as String,
       price: price == const $CopyWithPlaceholder() || price == null
           ? _value.price
           // ignore: cast_nullable_to_non_nullable
@@ -143,11 +170,13 @@ MenuItemModel _$MenuItemModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       category: json['category'] as String,
-      imageUrl: json['image_url'] as String,
+      imageUrl60: json['image_url60'] as String? ?? '',
+      imageUrl176: json['image_url176'] as String? ?? '',
+      imageUrl600: json['image_url600'] as String? ?? '',
       price: json['price'] as int,
       description: json['description'] as String? ?? '',
-      isPopular: json['isPopular'] as bool? ?? false,
-      isSoldOut: json['isSoldOut'] as bool? ?? false,
+      isPopular: json['is_popular'] as bool? ?? false,
+      isSoldOut: json['is_sold_out'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$MenuItemModelToJson(MenuItemModel instance) =>
@@ -155,9 +184,11 @@ Map<String, dynamic> _$MenuItemModelToJson(MenuItemModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'category': instance.category,
-      'image_url': instance.imageUrl,
+      'image_url60': instance.imageUrl60,
+      'image_url176': instance.imageUrl176,
+      'image_url600': instance.imageUrl600,
       'price': instance.price,
       'description': instance.description,
-      'isPopular': instance.isPopular,
-      'isSoldOut': instance.isSoldOut,
+      'is_popular': instance.isPopular,
+      'is_sold_out': instance.isSoldOut,
     };

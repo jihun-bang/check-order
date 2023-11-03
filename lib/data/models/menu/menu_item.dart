@@ -4,13 +4,14 @@ import 'package:json_annotation/json_annotation.dart';
 part 'menu_item.g.dart';
 
 @CopyWith()
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class MenuItemModel {
   final String id;
   final String name;
   final String category;
-  @JsonKey(name: 'image_url')
-  final String imageUrl;
+  final String imageUrl60;
+  final String imageUrl176;
+  final String imageUrl600;
   final int price;
   final String description;
   final bool isPopular;
@@ -20,7 +21,9 @@ class MenuItemModel {
     required this.id,
     required this.name,
     required this.category,
-    required this.imageUrl,
+    this.imageUrl60 = '',
+    this.imageUrl176 = '',
+    this.imageUrl600 = '',
     required this.price,
     this.description = '',
     this.isPopular = false,
