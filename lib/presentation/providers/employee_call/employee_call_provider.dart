@@ -63,4 +63,9 @@ class EmployeeCallProvider extends ChangeNotifier {
     }
     return result;
   }
+
+  void clear() {
+    _selectedItems.clear();
+    notifyListeners();
+  }
 }

@@ -6,6 +6,7 @@ import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
 import 'package:check_order/presentation/pages/employee_call/employee_call_dialog.dart';
 import 'package:check_order/presentation/pages/order/order_history_dialog.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
+import 'package:check_order/presentation/providers/employee_call/employee_call_provider.dart';
 import 'package:check_order/presentation/providers/home/menu_provider.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -31,6 +32,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _cartProvider = sl<CartProvider>();
   final _menuProvider = sl<MenuProvider>();
+  final _employeeCallProvider = sl<EmployeeCallProvider>();
   late final PageController _pageController;
 
   List<String> get _menuCategories => _menuProvider.categories;
@@ -75,8 +77,9 @@ class _HomePageState extends State<HomePage> {
     showMyDialog(context: context, child: const OrderHistoryDialog());
   }
 
-  void _showEmployeeCall() {
-    showMyDialog(context: context, child: const EmployeeCallDialog());
+  Future<void> _showEmployeeCall() async {
+    await showMyDialog(context: context, child: const EmployeeCallDialog());
+    _employeeCallProvider.clear();
   }
 
   @override
