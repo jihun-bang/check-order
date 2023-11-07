@@ -2,12 +2,12 @@ import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/theme/color.dart';
 import 'package:flutter/material.dart';
 
-class MenuCategoryIndicator extends StatefulWidget {
+class CategoryIndicator extends StatefulWidget {
   final int selectedIndex;
   final List<String> categories;
   final Function(int) onTap;
 
-  const MenuCategoryIndicator({
+  const CategoryIndicator({
     super.key,
     required this.selectedIndex,
     required this.categories,
@@ -15,10 +15,10 @@ class MenuCategoryIndicator extends StatefulWidget {
   });
 
   @override
-  State<MenuCategoryIndicator> createState() => _MenuCategoryIndicatorState();
+  State<CategoryIndicator> createState() => _CategoryIndicatorState();
 }
 
-class _MenuCategoryIndicatorState extends State<MenuCategoryIndicator> {
+class _CategoryIndicatorState extends State<CategoryIndicator> {
   double indicatorLeft = 0;
   double indicatorWidth = 0;
 

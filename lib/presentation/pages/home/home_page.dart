@@ -10,9 +10,9 @@ import 'package:check_order/presentation/providers/employee_call/employee_call_p
 import 'package:check_order/presentation/providers/home/menu_provider.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
+import 'package:check_order/presentation/widgets/home/category_indicator.dart';
+import 'package:check_order/presentation/widgets/home/category_list_item.dart';
 import 'package:check_order/presentation/widgets/home/menu_card.dart';
-import 'package:check_order/presentation/widgets/home/menu_list_item.dart';
-import 'package:check_order/presentation/widgets/home/munu_category_indicator.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                   children: _menuCategories
                       .mapIndexed(
-                        (index, item) => MenuListItem(
+                        (index, item) => CategoryListItem(
                           label: item,
                           enabled: _page == index,
                           onTap: () async {
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 62, left: 48),
           scrollDirection: Axis.horizontal,
-          child: MenuCategoryIndicator(
+          child: CategoryIndicator(
             selectedIndex: _page,
             categories: _menuCategories,
             onTap: (index) async {

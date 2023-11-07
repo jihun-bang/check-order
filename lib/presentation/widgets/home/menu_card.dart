@@ -1,4 +1,5 @@
 import 'package:check_order/core/theme/app_theme.dart';
+import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -48,7 +49,7 @@ class MenuCard extends StatelessWidget {
                   Container(
                       width: 176,
                       height: 176,
-                      decoration: const BoxDecoration(color: Color(0xFF0D0D0D)),
+                      color: MyColor.gray_20,
                       child: item.imageUrl176.isNotEmpty
 
                           /// TODO Cached 처리

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../common/empty_box.dart';
 
-class MenuListItem extends StatelessWidget {
+class CategoryListItem extends StatelessWidget {
   final String label;
   final bool enabled;
   final VoidCallback onTap;
 
-  const MenuListItem({
+  const CategoryListItem({
     super.key,
     required this.label,
     required this.enabled,
