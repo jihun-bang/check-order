@@ -1,5 +1,6 @@
 enum RouteList {
-  home('/');
+  landing('/'),
+  home('/home');
 
   const RouteList(this.path);
 

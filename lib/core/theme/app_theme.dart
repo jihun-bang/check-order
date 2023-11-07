@@ -20,3 +20,4 @@ final appTheme = ThemeData(
 );
 
 const Color kPrimaryColor = Color(0xFFFF5D02);
+const Color kSecondaryColor = Color(0xFFFF8F28);
