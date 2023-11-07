@@ -44,7 +44,7 @@ class EmployeeCallUseCase {
     required String itemId,
   }) {
     final index = items.indexWhere((item) => item.id == itemId);
-    if (index != 1) {
+    if (index != -1) {
       items.removeAt(index);
     }
 
