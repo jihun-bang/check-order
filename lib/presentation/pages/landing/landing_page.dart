@@ -2,6 +2,9 @@ import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../core/router/route_list.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -52,7 +55,9 @@ class _LandingPageState extends State<LandingPage> {
                   label: '시작하기',
                   width: 433,
                   color: kSecondaryColor,
-                  onTap: () {},
+                  onTap: () {
+                    context.goNamed(RouteList.tableRegistration.name);
+                  },
                 )
               ],
             ),

@@ -8,12 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
 import 'dependencies_injection.dart';
 
 void main() {
+  setPathUrlStrategy();
   setupLocator();
 
   runApp(const MyApp());

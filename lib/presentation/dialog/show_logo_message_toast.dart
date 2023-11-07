@@ -10,6 +10,8 @@ void showLogoMessageToast({
 }) {
   final toast = FToast();
   toast.init(context);
+  toast.removeCustomToast();
+  toast.removeQueuedCustomToasts();
   toast.showToast(
       child: Container(
         width: 600,
