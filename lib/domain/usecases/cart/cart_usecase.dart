@@ -1,3 +1,5 @@
+import 'package:check_order/core/utils/logger.dart';
+
 import '../../../data/models/cart/cart_item.dart';
 import '../../../data/models/menu/menu_item.dart';
 
@@ -18,7 +20,7 @@ class CartUseCase {
       );
     } else {
       cartItems.add(CartItemModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        id: newItem.id,
         item: newItem,
         updatedAt: DateTime.now(),
       ));
@@ -49,8 +51,10 @@ class CartUseCase {
     required List<CartItemModel> cartItems,
     required String cartItemId,
   }) {
+    Logger.d('cartItems=${cartItems.map((e) => e.id)}');
+    Logger.d('cartItemId=$cartItemId');
     final index = cartItems.indexWhere((cartItem) => cartItem.id == cartItemId);
-    if (index != 1) {
+    if (index != -1) {
       cartItems.removeAt(index);
     }
 
