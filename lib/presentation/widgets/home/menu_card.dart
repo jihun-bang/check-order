@@ -1,3 +1,4 @@
+import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -42,20 +43,49 @@ class MenuCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: SizedBox(
-                  width: 176,
-                  height: 176,
-                  child: item.imageUrl176.isNotEmpty
+              child: Stack(
+                children: [
+                  Container(
+                      width: 176,
+                      height: 176,
+                      decoration: const BoxDecoration(color: Color(0xFF0D0D0D)),
+                      child: item.imageUrl176.isNotEmpty
 
-                      /// TODO Cached 처리
-                      ? Image.asset(
-                          item.imageUrl176,
-                          fit: BoxFit.cover,
-                        )
-                      : Image.asset(
-                          'assets/images/menu/176/image ${int.parse(item.id) + 1}.png',
-                          fit: BoxFit.cover,
-                        )),
+                          /// TODO Cached 처리
+                          ? Image.asset(
+                              item.imageUrl176,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              'assets/images/menu/176/image ${int.parse(item.id) + 1}.png',
+                              fit: BoxFit.cover,
+                            )),
+                  if (item.isSoldOut)
+                    Opacity(
+                      opacity: 0.60,
+                      child: Container(
+                        width: 176,
+                        height: 176,
+                        decoration:
+                            const BoxDecoration(color: Color(0xFF0D0D0D)),
+                      ),
+                    ),
+                  if (item.isSoldOut)
+                    const Positioned.fill(
+                      child: Center(
+                        child: Text(
+                          '품절',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
             const EmptyBox(height: 20),
             Expanded(

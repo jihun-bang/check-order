@@ -11,7 +11,8 @@
     "name": "야끼교자",
     "price": 10500,
     "category": "튀김",
-    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주",
+    "is_sold_out": true
   },
   {
     "id": "2",
@@ -46,7 +47,8 @@
     "name": "금게조개술찜",
     "price": 16900,
     "category": "나베",
-    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주",
+    "is_sold_out": true
   },
   {
     "id": "7",
@@ -81,14 +83,16 @@
     "name": "돈페이야끼(오사카풍오믈렛)",
     "price": 14900,
     "category": "볶음/파스타",
-    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주",
+    "is_sold_out": true
   },
   {
     "id": "12",
     "name": "매콤야끼우동",
     "price": 13900,
     "category": "볶음/파스타",
-    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주"
+    "description": "참기름을 곁들인 신선한 육회에 바삭한 콘을 얹은 우주 최강 안주",
+    "is_sold_out": true
   },
   {
     "id": "13",
