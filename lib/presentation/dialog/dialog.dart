@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-void showMyDialog({
+Future<void> showMyDialog({
   required BuildContext context,
   required Widget child,
   double width = 1022,
   double height = 660,
-}) {
-  showDialog(
+}) async {
+  await showDialog(
       context: context,
       builder: (_) {
         return Dialog(

@@ -43,14 +43,15 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  void _showAddCart(MenuItemModel item) {
-    showMyDialog(
+  Future<void> _showAddCart(MenuItemModel item) async {
+    await showMyDialog(
         context: context,
         child: AddCartDialog(
           item: item,
           onAddCart: () {
             _cartProvider.addCartItem(item);
             Navigator.pop(context);
+            _showCart();
           },
         ));
   }
@@ -63,6 +64,8 @@ class _HomePageState extends State<HomePage> {
           return const Dialog(
             alignment: Alignment.centerRight,
             insetPadding: EdgeInsets.all(12),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12))),
             child: CartDialog(),
           );
         });
