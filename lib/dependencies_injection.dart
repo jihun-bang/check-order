@@ -1,3 +1,4 @@
+import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/domain/usecases/cart/cart_usecase.dart';
 import 'package:check_order/domain/usecases/employee_call/employee_call_usecase.dart';
 import 'package:check_order/domain/usecases/home/menu_usecase.dart';
@@ -27,4 +28,5 @@ void setupLocator() {
   sl.registerLazySingleton<EmployeeCallProvider>(
       () => EmployeeCallProvider(sl()));
   sl.registerLazySingleton<MenuProvider>(() => MenuProvider(sl()));
+  sl.registerSingleton<AuthService>(AuthService());
 }

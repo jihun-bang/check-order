@@ -1,9 +1,9 @@
 import 'package:check_order/data/models/menu/menu_item.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../domain/usecases/home/menu_usecase.dart';
+import '../base_provider.dart';
 
-class MenuProvider extends ChangeNotifier {
+class MenuProvider extends BaseProvider {
   final MenuUseCase _useCase;
 
   List<String> _categories = [];
@@ -26,4 +26,7 @@ class MenuProvider extends ChangeNotifier {
     _items = await _useCase.getItems();
     notifyListeners();
   }
+
+  @override
+  void clear() {}
 }

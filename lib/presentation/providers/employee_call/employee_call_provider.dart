@@ -1,9 +1,10 @@
 import 'package:check_order/data/models/employee_call/employee_call_item.dart';
 import 'package:check_order/domain/usecases/employee_call/employee_call_usecase.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/widgets.dart';
 
-class EmployeeCallProvider extends ChangeNotifier {
+import '../base_provider.dart';
+
+class EmployeeCallProvider extends BaseProvider {
   final EmployeeCallUseCase _useCase;
 
   List<EmployeeCallItemModel> _items = [];
@@ -64,6 +65,7 @@ class EmployeeCallProvider extends ChangeNotifier {
     return result;
   }
 
+  @override
   void clear() {
     _selectedItems.clear();
     notifyListeners();

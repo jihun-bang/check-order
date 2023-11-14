@@ -1,9 +1,9 @@
 import 'package:check_order/data/models/cart/cart_item.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/domain/usecases/cart/cart_usecase.dart';
-import 'package:flutter/widgets.dart';
+import 'package:check_order/presentation/providers/base_provider.dart';
 
-class CartProvider extends ChangeNotifier {
+class CartProvider extends BaseProvider {
   final CartUseCase _useCase;
 
   List<CartItemModel> _items = [];
@@ -26,6 +26,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  @override
   void clear() {
     _items.clear();
     notifyListeners();

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/providers/cart/cart_provider.dart';
 import 'package:check_order/presentation/providers/employee_call/employee_call_provider.dart';
 import 'package:check_order/presentation/providers/home/menu_provider.dart';
@@ -7,6 +8,7 @@ import 'package:check_order/presentation/providers/order/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -14,6 +16,7 @@ import 'core/router/router.dart';
 import 'core/theme/app_theme.dart';
 import 'dependencies_injection.dart';
 
+const storage = FlutterSecureStorage();
 void main() {
   setPathUrlStrategy();
   setupLocator();
@@ -43,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         constraints: BoxConstraints.tight(const Size(1280, 800)),
         child: MultiProvider(
           providers: [
+            ChangeNotifierProvider<AuthService>(create: (_) => sl()),
             ChangeNotifierProvider<CartProvider>(create: (_) => sl()),
             ChangeNotifierProvider<OrderProvider>(create: (_) => sl()),
             ChangeNotifierProvider<EmployeeCallProvider>(create: (_) => sl()),

@@ -1,9 +1,11 @@
 import 'package:check_order/core/router/route_list.dart';
+import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/pages/home/home_page.dart';
 import 'package:check_order/presentation/pages/registration/table_registration_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../dependencies_injection.dart';
 import '../../presentation/pages/landing/landing_page.dart';
 import '../utils/logger.dart';
 
@@ -12,7 +14,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteList.landing.path,
+  initialLocation: RouteList.home.path,
   routes: [
     GoRoute(
       path: RouteList.landing.path,
@@ -29,12 +31,15 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: RouteList.home.path,
-      name: RouteList.home.name,
-      builder: (context, state) {
-        return const HomePage();
-      },
-    ),
+        path: RouteList.home.path,
+        name: RouteList.home.name,
+        builder: (context, state) {
+          return const HomePage();
+        },
+        redirect: (_, __) {
+          final isLogin = sl<AuthService>().tableInfo.isValid;
+          return isLogin ? null : RouteList.landing.path;
+        }),
   ],
   errorBuilder: (context, state) {
     Logger.e(state.error?.message);

@@ -1,6 +1,8 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/theme/color.dart';
+import 'package:check_order/data/models/table/table_info_model.dart';
+import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/dialog/show_logo_message_toast.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
@@ -8,6 +10,8 @@ import 'package:check_order/presentation/widgets/common/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../dependencies_injection.dart';
 
 class TableRegistrationPage extends StatefulWidget {
   const TableRegistrationPage({super.key});
@@ -17,6 +21,8 @@ class TableRegistrationPage extends StatefulWidget {
 }
 
 class _TableRegistrationPageState extends State<TableRegistrationPage> {
+  final _auth = sl<AuthService>();
+
   Future<void> _tableRegistration() async {
     if (mounted) {
       showLogoMessageToast(context: context, message: '연결중입니다...');
@@ -84,16 +90,34 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
   }
 
   Widget get _ip {
-    return const CheckOrderTextField(label: 'IP 주소', hintText: '128.0.0.1');
+    return CheckOrderTextField(
+      label: 'IP 주소',
+      hintText: '128.0.0.1',
+      onChanged: (value) {
+        _auth.update(_auth.tableInfo.copyWith(ipAddress: value));
+      },
+    );
   }
 
   Widget get _tableName {
-    return const CheckOrderTextField(label: '테이블 이름', hintText: '테이블 1번');
+    return CheckOrderTextField(
+      label: '테이블 이름',
+      hintText: '테이블 1번',
+      onChanged: (value) {
+        _auth.update(_auth.tableInfo.copyWith(tableName: value));
+      },
+    );
   }
 
   Widget get _memo {
-    return const CheckOrderTextField(
-        label: '메모 (선택)', labelColor: Color(0xFF8A8A8A), hintText: '우측 창가');
+    return CheckOrderTextField(
+      label: '메모 (선택)',
+      labelColor: const Color(0xFF8A8A8A),
+      hintText: '우측 창가',
+      onChanged: (value) {
+        _auth.update(_auth.tableInfo.copyWith(description: value));
+      },
+    );
   }
 
   Widget get _confirm {
