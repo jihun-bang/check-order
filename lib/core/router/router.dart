@@ -17,28 +17,31 @@ final GoRouter router = GoRouter(
   initialLocation: RouteList.home.path,
   routes: [
     GoRoute(
-      path: RouteList.landing.path,
-      name: RouteList.landing.name,
-      builder: (context, state) {
-        return const LandingPage();
-      },
-    ),
+        path: RouteList.landing.path,
+        name: RouteList.landing.name,
+        builder: (context, state) {
+          return const LandingPage();
+        },
+        redirect: (_, __) async {
+          return await _isLogin() ? RouteList.home.path : null;
+        }),
     GoRoute(
-      path: RouteList.tableRegistration.path,
-      name: RouteList.tableRegistration.name,
-      builder: (context, state) {
-        return const TableRegistrationPage();
-      },
-    ),
+        path: RouteList.tableRegistration.path,
+        name: RouteList.tableRegistration.name,
+        builder: (context, state) {
+          return const TableRegistrationPage();
+        },
+        redirect: (_, __) async {
+          return await _isLogin() ? RouteList.home.path : null;
+        }),
     GoRoute(
         path: RouteList.home.path,
         name: RouteList.home.name,
         builder: (context, state) {
           return const HomePage();
         },
-        redirect: (_, __) {
-          final isLogin = sl<AuthService>().tableInfo.isValid;
-          return isLogin ? null : RouteList.landing.path;
+        redirect: (_, __) async {
+          return await _isLogin() ? null : RouteList.landing.path;
         }),
   ],
   errorBuilder: (context, state) {
@@ -49,3 +52,11 @@ final GoRouter router = GoRouter(
     return const SizedBox();
   },
 );
+
+Future<bool> _isLogin() async {
+  final auth = sl<AuthService>();
+  await auth.getTable();
+  final isLogin = auth.tableInfo.isValid;
+  Logger.d(auth.tableInfo.toJson());
+  return isLogin;
+}

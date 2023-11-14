@@ -32,10 +32,11 @@ class AuthService extends ChangeNotifier {
     });
   }
 
-  Future<void> save() async {
+  Future<bool> save() async {
     if (tableInfo.isValid) {
       await storage.write(key: 'tableInfo', value: jsonEncode(tableInfo));
     }
+    return tableInfo.isValid;
   }
 
   Future<void> logOut() async {
