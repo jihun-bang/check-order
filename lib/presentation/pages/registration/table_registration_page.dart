@@ -1,6 +1,5 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/core/theme/app_theme.dart';
-import 'package:check_order/core/theme/color.dart';
 import 'package:check_order/data/models/table/table_info_model.dart';
 import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/dialog/show_logo_message_toast.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../dependencies_injection.dart';
+import '../../widgets/registration/page_info_label.dart';
 
 class TableRegistrationPage extends StatefulWidget {
   const TableRegistrationPage({super.key});
@@ -72,23 +72,7 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SvgPicture.asset('assets/icons/icon_logo_h.svg'),
-          Container(
-            width: 153,
-            height: 36,
-            alignment: Alignment.center,
-            decoration: ShapeDecoration(
-              color: MyColor.gray_10,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-            ),
-            child: const Text(
-              '테이블 등록',
-              style: TextStyle(
-                color: Color(0xFF5F5F5F),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          )
+          const PageInfoLabel(label: '테이블 등록'),
         ],
       ),
     );

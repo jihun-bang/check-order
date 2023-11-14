@@ -1,3 +1,4 @@
+import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
@@ -16,6 +17,7 @@ import 'package:check_order/presentation/widgets/home/menu_card.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../dependencies_injection.dart';
@@ -36,9 +38,12 @@ class _HomePageState extends State<HomePage> {
   late final PageController _pageController;
 
   List<String> get _menuCategories => _menuProvider.categories;
+
   List<MenuItemModel> get _items => _menuProvider.items;
+
   int get _page =>
       _pageController.hasClients ? _pageController.page?.toInt() ?? 0 : 0;
+  int _logoClickCounter = 0;
 
   Future<void> _scrollToItem(int index) async {
     _pageController.jumpToPage(index);
@@ -182,9 +187,15 @@ class _HomePageState extends State<HomePage> {
   Widget get _logo {
     return InkWell(
       onTap: () {
-        setState(() {
-          _pageController.jumpToPage(0);
-        });
+        _logoClickCounter++;
+        if (_logoClickCounter == 5) {
+          _logoClickCounter = 0;
+          context.pushNamed(RouteList.tablePassword.name);
+        } else {
+          setState(() {
+            _pageController.jumpToPage(0);
+          });
+        }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 13),
