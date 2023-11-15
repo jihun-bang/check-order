@@ -35,5 +35,5 @@ void showMessageToast({
         );
       },
       gravity: ToastGravity.CENTER,
-      toastDuration: const Duration(seconds: 2));
+      toastDuration: const Duration(milliseconds: 1500));
 }

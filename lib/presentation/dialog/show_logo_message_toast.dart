@@ -26,6 +26,14 @@ void showLogoMessageToast({
             side: const BorderSide(width: 0.5, color: MyColor.gray_20),
             borderRadius: BorderRadius.circular(12),
           ),
+          shadows: const [
+            BoxShadow(
+              color: Color(0x4C000000),
+              blurRadius: 40,
+              offset: Offset(0, 0),
+              spreadRadius: 0,
+            )
+          ],
         ),
         child: Center(
           child: Column(
@@ -50,5 +58,5 @@ void showLogoMessageToast({
         ),
       ),
       gravity: ToastGravity.CENTER,
-      toastDuration: const Duration(seconds: 2));
+      toastDuration: const Duration(milliseconds: 1500));
 }

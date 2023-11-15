@@ -28,7 +28,7 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
     if (mounted) {
       if (success) {
         showLogoMessageToast(context: context, message: '연결중입니다...');
-        await Future.delayed(const Duration(seconds: 2)).then((_) {
+        await Future.delayed(const Duration(seconds: 1)).then((_) {
           if (true) {
             showLogoMessageToast(context: context, message: '성공적으로 연결되었습니다.');
             context.goNamed(RouteList.home.name);

@@ -23,7 +23,7 @@ class TableAdminPage extends StatefulWidget {
 
 class _TableAdminPageState extends State<TableAdminPage> {
   final _auth = sl<AuthService>();
-  late final TableInfoModel _tableInfo;
+  late TableInfoModel _tableInfo;
 
   Future<void> _reset() async {
     await _auth.logOut();

@@ -37,6 +37,8 @@ class AuthService extends ChangeNotifier {
     if (tableInfo.isValid) {
       await storage.write(key: 'tableInfo', value: jsonEncode(tableInfo));
     }
+    _tableInfo = tableInfo;
+    notifyListeners();
     return tableInfo.isValid;
   }
 

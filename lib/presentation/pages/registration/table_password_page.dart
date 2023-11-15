@@ -41,7 +41,7 @@ class _TablePasswordPageState extends State<TablePasswordPage> {
     if (_inputPassword.map((e) => e.toString()).join('') == _validPassword) {
       if (mounted) {
         showLogoMessageToast(context: context, message: '로그인 중입니다...');
-        await Future.delayed(const Duration(seconds: 2)).then((_) {
+        await Future.delayed(const Duration(seconds: 1)).then((_) {
           if (true) {
             showLogoMessageToast(context: context, message: '성공적으로 로그인되었습니다.');
             context.goNamed(RouteList.admin.name);

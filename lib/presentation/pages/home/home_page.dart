@@ -1,6 +1,7 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/dialog/dialog.dart';
 import 'package:check_order/presentation/pages/cart/add_cart_dialog.dart';
 import 'package:check_order/presentation/pages/cart/cart_dialog.dart';
@@ -97,7 +98,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFFAF9FF),
+        backgroundColor: Colors.white,
         body: Consumer<MenuProvider>(builder: (_, __, ___) {
           if (_menuCategories.isEmpty) {
             return const Center(child: CircularProgressIndicator());
@@ -252,22 +253,61 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget get _categoryIndicator {
-    return Container(
-      margin: const EdgeInsets.only(right: 48),
-      child: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 62, left: 48),
-          scrollDirection: Axis.horizontal,
-          child: CategoryIndicator(
-            selectedIndex: _page,
-            categories: _menuCategories,
-            onTap: (index) async {
-              await _scrollToItem(index);
-            },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          width: 108,
+          height: 53,
+          alignment: Alignment.center,
+          decoration: ShapeDecoration(
+            color: const Color(0xFFF1F1F1),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+          child: Consumer<AuthService>(builder: (_, auth, ___) {
+            return Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${auth.tableInfo.tableName}\n',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const TextSpan(
+                    text: '테이블 번호',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            );
+          }),
+        ),
+        Container(
+          margin: const EdgeInsets.only(right: 48),
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(top: 8, left: 48),
+              scrollDirection: Axis.horizontal,
+              child: CategoryIndicator(
+                selectedIndex: _page,
+                categories: _menuCategories,
+                onTap: (index) async {
+                  await _scrollToItem(index);
+                },
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
