@@ -1,12 +1,12 @@
 import 'package:check_order/core/theme/color.dart';
-import 'package:check_order/data/models/employee_call/employee_call_item.dart';
+import 'package:check_order/data/models/order/order_item.dart';
 import 'package:check_order/presentation/widgets/common/counter.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeCallCounterItem extends StatelessWidget {
-  final EmployeeCallItemModel item;
+  final OrderItemModel item;
   final Function(String) onDeleteItem;
-  final Function(EmployeeCallItemModel) onAddItem;
+  final Function(OrderItemModel) onAddItem;
   final Function(String) onRemoveItem;
 
   const EmployeeCallCounterItem({
@@ -41,7 +41,7 @@ class EmployeeCallCounterItem extends StatelessWidget {
           width: 240,
           margin: const EdgeInsets.only(left: 32, top: 20, bottom: 16),
           child: Text(
-            item.name,
+            item.item.name,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 24,

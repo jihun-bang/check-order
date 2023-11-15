@@ -29,9 +29,9 @@ class DialogTitle extends StatelessWidget {
           height: 21.33,
         ),
         const EmptyBox(width: 6.67),
-        const Text(
-          '직원 호출',
-          style: TextStyle(
+        Text(
+          title,
+          style: const TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w700,
           ),

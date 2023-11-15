@@ -59,7 +59,7 @@ class _EmployeeCallDialogState extends State<EmployeeCallDialog> {
         itemBuilder: (_, index) {
           final item = _provider.items[index];
           return EmployeeCallMenuItem(
-            label: item.name,
+            label: item.item.name,
             isSelected: _provider.isSelectedItem(item.id),
             onTap: () {
               _provider.addItem(item);

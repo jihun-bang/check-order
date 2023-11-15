@@ -1,11 +1,11 @@
-import '../../../data/models/employee_call/employee_call_item.dart';
+import 'package:check_order/data/models/order/order_item.dart';
 
 class EmployeeCallUseCase {
   EmployeeCallUseCase();
 
-  List<EmployeeCallItemModel> addItem({
-    required List<EmployeeCallItemModel> items,
-    required EmployeeCallItemModel newItem,
+  List<OrderItemModel> addItem({
+    required List<OrderItemModel> items,
+    required OrderItemModel newItem,
   }) {
     final index = items.indexWhere((item) => item.id == newItem.id);
     if (index != -1) {
@@ -21,8 +21,8 @@ class EmployeeCallUseCase {
     return items;
   }
 
-  List<EmployeeCallItemModel> removeItem({
-    required List<EmployeeCallItemModel> items,
+  List<OrderItemModel> removeItem({
+    required List<OrderItemModel> items,
     required String itemId,
   }) {
     final index = items.indexWhere((item) => item.id == itemId);
@@ -39,8 +39,8 @@ class EmployeeCallUseCase {
     return items;
   }
 
-  List<EmployeeCallItemModel> deleteItem({
-    required List<EmployeeCallItemModel> items,
+  List<OrderItemModel> deleteItem({
+    required List<OrderItemModel> items,
     required String itemId,
   }) {
     final index = items.indexWhere((item) => item.id == itemId);
@@ -51,7 +51,7 @@ class EmployeeCallUseCase {
     return items;
   }
 
-  Future<bool> call({required List<EmployeeCallItemModel> items}) {
+  Future<bool> call({required List<OrderItemModel> items}) {
     return Future(() => true);
   }
 }

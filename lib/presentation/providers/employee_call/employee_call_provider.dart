@@ -1,17 +1,21 @@
-import 'package:check_order/data/models/employee_call/employee_call_item.dart';
+import 'package:check_order/data/models/cart/cart_item.dart';
+import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/domain/usecases/employee_call/employee_call_usecase.dart';
+import 'package:check_order/presentation/providers/order/order_provider.dart';
 import 'package:collection/collection.dart';
 
+import '../../../data/models/order/order_item.dart';
+import '../../../dependencies_injection.dart';
 import '../base_provider.dart';
 
 class EmployeeCallProvider extends BaseProvider {
   final EmployeeCallUseCase _useCase;
 
-  List<EmployeeCallItemModel> _items = [];
-  List<EmployeeCallItemModel> get items => _items;
+  List<OrderItemModel> _items = [];
+  List<OrderItemModel> get items => _items;
 
-  List<EmployeeCallItemModel> _selectedItems = [];
-  List<EmployeeCallItemModel> get selectedItems => _selectedItems;
+  List<OrderItemModel> _selectedItems = [];
+  List<OrderItemModel> get selectedItems => _selectedItems;
 
   EmployeeCallProvider(this._useCase) {
     _items = [
@@ -28,10 +32,12 @@ class EmployeeCallProvider extends BaseProvider {
       '물컵'
     ]
         .mapIndexed(
-          (index, e) => EmployeeCallItemModel(
+          (index, e) => OrderItemModel(
             id: index.toString(),
-            name: e,
+            item: MenuItemModel(
+                id: index.toString(), name: e, category: '직원호출', price: 0),
             updatedAt: DateTime.now(),
+            totalAmount: 0,
           ),
         )
         .toList();
@@ -41,7 +47,7 @@ class EmployeeCallProvider extends BaseProvider {
     return selectedItems.map((e) => e.id).contains(id);
   }
 
-  void addItem(EmployeeCallItemModel newItem) {
+  void addItem(OrderItemModel newItem) {
     _selectedItems = _useCase.addItem(items: selectedItems, newItem: newItem);
     notifyListeners();
   }
@@ -58,6 +64,11 @@ class EmployeeCallProvider extends BaseProvider {
 
   Future<bool> call() async {
     final result = await _useCase.call(items: selectedItems);
+    sl<OrderProvider>().addOrder(
+        cartItems: selectedItems
+            .map((e) => CartItemModel(
+                id: e.id, item: e.item, updatedAt: e.updatedAt, count: e.count))
+            .toList());
     if (result) {
       _selectedItems.clear();
       notifyListeners();
