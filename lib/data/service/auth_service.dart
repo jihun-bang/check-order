@@ -32,7 +32,8 @@ class AuthService extends ChangeNotifier {
     });
   }
 
-  Future<bool> save() async {
+  Future<bool> save({TableInfoModel? tableInfoModel}) async {
+    final tableInfo = tableInfoModel ?? this.tableInfo;
     if (tableInfo.isValid) {
       await storage.write(key: 'tableInfo', value: jsonEncode(tableInfo));
     }

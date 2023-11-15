@@ -1,3 +1,4 @@
+import 'package:check_order/core/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -22,6 +23,7 @@ void showLogoMessageToast({
         decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 0.5, color: MyColor.gray_20),
             borderRadius: BorderRadius.circular(12),
           ),
         ),

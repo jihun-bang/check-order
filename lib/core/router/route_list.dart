@@ -2,7 +2,8 @@ enum RouteList {
   home('/'),
   landing('landing'),
   tableRegistration('/table-registration'),
-  tablePassword('table-password');
+  tablePassword('table-password'),
+  admin('admin');
 
   const RouteList(this.path);
 

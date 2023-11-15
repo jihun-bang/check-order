@@ -1,6 +1,7 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/pages/home/home_page.dart';
+import 'package:check_order/presentation/pages/registration/table_admin_page.dart';
 import 'package:check_order/presentation/pages/registration/table_password_page.dart';
 import 'package:check_order/presentation/pages/registration/table_registration_page.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +52,15 @@ final GoRouter router = GoRouter(
               name: RouteList.tablePassword.name,
               builder: (context, state) {
                 return const TablePasswordPage();
+              },
+              redirect: (_, __) async {
+                return await _isLogin() ? null : '/${RouteList.landing.path}';
+              }),
+          GoRoute(
+              path: RouteList.admin.path,
+              name: RouteList.admin.name,
+              builder: (context, state) {
+                return const TableAdminPage();
               },
               redirect: (_, __) async {
                 return await _isLogin() ? null : '/${RouteList.landing.path}';

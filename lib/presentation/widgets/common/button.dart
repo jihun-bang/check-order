@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CheckOrderButton extends StatefulWidget {
   final String label;
+  final Color? labelColor;
   final Widget? child;
   final double width;
   final double height;
@@ -13,6 +14,7 @@ class CheckOrderButton extends StatefulWidget {
   const CheckOrderButton({
     super.key,
     required this.label,
+    this.labelColor,
     this.child,
     this.width = 248,
     this.height = 58,
@@ -49,10 +51,11 @@ class _CheckOrderButtonState extends State<CheckOrderButton> {
     return ElevatedButton(
       onPressed: widget.enable ? () async => await _handlePress() : null,
       style: ElevatedButton.styleFrom(
-          elevation: 0,
-          fixedSize: Size(widget.width, widget.height),
-          disabledBackgroundColor: MyColor.gray_30,
-          backgroundColor: widget.color),
+        elevation: 0,
+        fixedSize: Size(widget.width, widget.height),
+        disabledBackgroundColor: MyColor.gray_30,
+        backgroundColor: widget.color,
+      ),
       child: Center(
         child: _isLoading
             ? const SizedBox(
@@ -65,8 +68,8 @@ class _CheckOrderButtonState extends State<CheckOrderButton> {
             : widget.child ??
                 Text(
                   widget.label,
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: widget.labelColor ?? Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
