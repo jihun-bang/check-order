@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/presentation/dialog/show_message_toast.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +111,11 @@ class _AddCartDialogState extends State<AddCartDialog> {
         width: 332,
         label: '장바구니 담기',
         color: kPrimaryColor,
-        onTap: widget.onAddCart,
+        onTap: !widget.item.isSoldOut
+            ? widget.onAddCart
+            : () {
+                showMessageToast(context: context, message: '해당 상품은 품절되었습니다.');
+              },
       ),
     );
   }
