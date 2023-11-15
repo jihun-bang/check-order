@@ -34,6 +34,8 @@ class _TablePasswordPageState extends State<TablePasswordPage> {
   ];
   List<int> _inputPassword = [-1, -1, -1, -1];
   final _auth = sl<AuthService>();
+  int get _passwordCount =>
+      _inputPassword.where((password) => password != -1).length;
 
   Future<void> _login() async {
     if (_inputPassword.map((e) => e.toString()).join('') == _validPassword) {
@@ -47,6 +49,9 @@ class _TablePasswordPageState extends State<TablePasswordPage> {
         });
       }
     } else {
+      setState(() {
+        _inputPassword = [-1, -1, -1, -1];
+      });
       showLogoMessageToast(context: context, message: '비밀번호가 맞지 않습니다.');
     }
   }
@@ -194,26 +199,25 @@ class _TablePasswordPageState extends State<TablePasswordPage> {
           return PasswordButton(
             number: item,
             onTap: () async {
-              final passwordCount =
-                  _inputPassword.where((password) => password != -1).length;
               final number = int.tryParse(item);
-              if (passwordCount < 4) {
-                setState(() {
-                  if (number != null) {
+
+              setState(() {
+                if (number != null) {
+                  if (_passwordCount < 4) {
                     _inputPassword[_inputPassword.indexOf(-1)] = number;
-                  } else if (item == 'C') {
-                    _inputPassword = [-1, -1, -1, -1];
-                  } else {
-                    final index = _inputPassword
-                        .lastIndexWhere((password) => password != -1);
-                    if (index != -1) {
-                      _inputPassword[index] = -1;
-                    }
                   }
-                });
-              }
-              if (_inputPassword.where((password) => password != -1).length ==
-                  4) {
+                } else if (item == 'C') {
+                  _inputPassword = [-1, -1, -1, -1];
+                } else {
+                  final index = _inputPassword
+                      .lastIndexWhere((password) => password != -1);
+                  if (index != -1) {
+                    _inputPassword[index] = -1;
+                  }
+                }
+              });
+
+              if (_passwordCount == 4) {
                 await _login();
               }
             },

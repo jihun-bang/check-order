@@ -17,7 +17,9 @@ import 'core/theme/app_theme.dart';
 import 'dependencies_injection.dart';
 
 const storage = FlutterSecureStorage();
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   setupLocator();
 
