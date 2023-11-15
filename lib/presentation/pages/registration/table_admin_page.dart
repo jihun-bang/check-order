@@ -3,6 +3,7 @@ import 'package:check_order/core/theme/app_theme.dart';
 import 'package:check_order/data/models/table/table_info_model.dart';
 import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/presentation/dialog/show_logo_message_toast.dart';
+import 'package:check_order/presentation/dialog/show_message_toast.dart';
 import 'package:check_order/presentation/widgets/common/button.dart';
 import 'package:check_order/presentation/widgets/common/empty_box.dart';
 import 'package:check_order/presentation/widgets/common/text_field.dart';
@@ -118,9 +119,15 @@ class _TableAdminPageState extends State<TableAdminPage> {
           },
         ),
         _buildSave(onSave: () {
-          _auth.save(
-              tableInfoModel: _tableInfo.copyWith(
-                  description: _auth.tableInfo.description));
+          _auth
+              .save(
+                  tableInfoModel: _tableInfo.copyWith(
+                      description: _auth.tableInfo.description))
+              .then((value) {
+            if (value) {
+              showMessageToast(context: context, message: '성공적으로 저장되었습니다.');
+            }
+          });
         }),
       ],
     );
@@ -140,24 +147,39 @@ class _TableAdminPageState extends State<TableAdminPage> {
             _tableInfo = _tableInfo.copyWith(description: value);
           },
         ),
-        _buildSave(onSave: () {
-          _auth.save(
-              tableInfoModel:
-                  _tableInfo.copyWith(tableName: _auth.tableInfo.tableName));
-        }),
+        _buildSave(
+            color: const Color(0xFFF1F1F1),
+            labelColor: const Color(0xFF5F5F5F),
+            onSave: () {
+              _auth
+                  .save(
+                      tableInfoModel: _tableInfo.copyWith(
+                          tableName: _auth.tableInfo.tableName))
+                  .then((value) {
+                if (value) {
+                  showMessageToast(context: context, message: '성공적으로 저장되었습니다.');
+                }
+              });
+            }),
       ],
     );
   }
 
-  Widget _buildSave({required VoidCallback onSave}) {
+  Widget _buildSave({
+    required VoidCallback onSave,
+    Color color = kSecondaryColor,
+    Color? labelColor,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(left: 18, bottom: 13),
       child: CheckOrderButton(
-          width: 86,
-          height: 48,
-          label: '저장',
-          onTap: onSave,
-          color: kSecondaryColor),
+        width: 86,
+        height: 48,
+        label: '저장',
+        labelColor: labelColor,
+        onTap: onSave,
+        color: color,
+      ),
     );
   }
 
