@@ -1,4 +1,4 @@
-import 'package:check_order/data/models/order/order_item.dart';
+import 'package:check_order/features/order/data/models/order_item.dart';
 
 class EmployeeCallUseCase {
   EmployeeCallUseCase();

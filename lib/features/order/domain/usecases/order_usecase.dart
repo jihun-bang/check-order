@@ -1,6 +1,6 @@
-import 'package:check_order/data/models/order/order_item.dart';
+import 'package:check_order/features/order/data/models/order_item.dart';
 
-import '../../../data/models/cart/cart_item.dart';
+import '../../../cart/data/models/cart_item.dart';
 
 class OrderUseCase {
   OrderUseCase();

@@ -2,8 +2,8 @@ import 'package:check_order/core/theme/colors.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/core/widgets/counter.dart';
 import 'package:check_order/core/widgets/menu_image.dart';
-import 'package:check_order/data/models/cart/cart_item.dart';
-import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/features/cart/data/models/cart_item.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/empty_box.dart';

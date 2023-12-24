@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/features/cart/presentation/providers/cart_provider.dart';
 import 'package:check_order/features/employee_call/presentation/providers/employee_call_provider.dart';
 import 'package:check_order/features/home/presentation/providers/menu_provider.dart';
 import 'package:check_order/features/order/presentation/providers/order_provider.dart';
+import 'package:check_order/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

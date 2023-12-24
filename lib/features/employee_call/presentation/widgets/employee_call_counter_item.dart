@@ -1,5 +1,5 @@
 import 'package:check_order/core/widgets/counter.dart';
-import 'package:check_order/data/models/order/order_item.dart';
+import 'package:check_order/features/order/data/models/order_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/colors.dart';

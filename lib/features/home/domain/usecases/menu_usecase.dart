@@ -1,6 +1,6 @@
-import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 
-import '../../../core/utils/util.dart';
+import '../../../../core/utils/util.dart';
 
 class MenuUseCase {
   MenuUseCase();

@@ -1,7 +1,7 @@
 import 'package:check_order/core/utils/logger.dart';
 
-import '../../../data/models/cart/cart_item.dart';
-import '../../../data/models/menu/menu_item.dart';
+import '../../../home/data/models/menu_item.dart';
+import '../../data/models/cart_item.dart';
 
 class CartUseCase {
   CartUseCase();

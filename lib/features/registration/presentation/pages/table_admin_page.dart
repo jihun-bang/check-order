@@ -1,9 +1,9 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/core/widgets/text_field/app_text_field.dart';
-import 'package:check_order/data/models/table/table_info_model.dart';
-import 'package:check_order/data/service/auth_service.dart';
 import 'package:check_order/features/dialog/show_logo_message_toast.dart';
 import 'package:check_order/features/dialog/show_message_toast.dart';
+import 'package:check_order/features/registration/data/models/table_info_model.dart';
+import 'package:check_order/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';

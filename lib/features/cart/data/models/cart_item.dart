@@ -1,4 +1,4 @@
-import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 

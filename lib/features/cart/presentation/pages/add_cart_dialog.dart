@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:check_order/core/theme/colors.dart';
 import 'package:check_order/core/utils/extension.dart';
 import 'package:check_order/core/widgets/buttons/app_button.dart';
-import 'package:check_order/data/models/menu/menu_item.dart';
 import 'package:check_order/features/dialog/show_message_toast.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/empty_box.dart';

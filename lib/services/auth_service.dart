@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:check_order/data/models/table/table_info_model.dart';
 import 'package:check_order/features/cart/presentation/providers/cart_provider.dart';
 import 'package:check_order/features/employee_call/presentation/providers/employee_call_provider.dart';
 import 'package:check_order/features/home/presentation/providers/menu_provider.dart';
 import 'package:check_order/features/order/presentation/providers/order_provider.dart';
+import 'package:check_order/features/registration/data/models/table_info_model.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../dependencies_injection.dart';
-import '../../main.dart';
+import '../dependencies_injection.dart';
+import '../main.dart';
 
 class AuthService extends ChangeNotifier {
   TableInfoModel _tableInfo = TableInfoModel();

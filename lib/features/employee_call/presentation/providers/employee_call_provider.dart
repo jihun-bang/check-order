@@ -1,12 +1,12 @@
-import 'package:check_order/data/models/cart/cart_item.dart';
-import 'package:check_order/data/models/menu/menu_item.dart';
-import 'package:check_order/domain/usecases/employee_call/employee_call_usecase.dart';
+import 'package:check_order/features/cart/data/models/cart_item.dart';
+import 'package:check_order/features/employee_call/domain/usecases/employee_call_usecase.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 import 'package:check_order/features/order/presentation/providers/order_provider.dart';
 import 'package:collection/collection.dart';
 
 import '../../../../base_provider.dart';
-import '../../../../data/models/order/order_item.dart';
 import '../../../../dependencies_injection.dart';
+import '../../../order/data/models/order_item.dart';
 
 class EmployeeCallProvider extends BaseProvider {
   final EmployeeCallUseCase _useCase;

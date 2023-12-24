@@ -1,7 +1,7 @@
-import 'package:check_order/data/models/menu/menu_item.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 
 import '../../../../base_provider.dart';
-import '../../../../domain/usecases/home/menu_usecase.dart';
+import '../../domain/usecases/menu_usecase.dart';
 
 class MenuProvider extends BaseProvider {
   final MenuUseCase _useCase;

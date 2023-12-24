@@ -1,8 +1,8 @@
 import 'package:check_order/base_provider.dart';
-import 'package:check_order/data/models/cart/cart_item.dart';
-import 'package:check_order/data/models/order/order_item.dart';
-import 'package:check_order/domain/usecases/order/order_usecase.dart';
+import 'package:check_order/features/cart/data/models/cart_item.dart';
 import 'package:check_order/features/cart/presentation/providers/cart_provider.dart';
+import 'package:check_order/features/order/data/models/order_item.dart';
+import 'package:check_order/features/order/domain/usecases/order_usecase.dart';
 
 import '../../../../dependencies_injection.dart';
 

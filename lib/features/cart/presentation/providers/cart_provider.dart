@@ -1,7 +1,7 @@
 import 'package:check_order/base_provider.dart';
-import 'package:check_order/data/models/cart/cart_item.dart';
-import 'package:check_order/data/models/menu/menu_item.dart';
-import 'package:check_order/domain/usecases/cart/cart_usecase.dart';
+import 'package:check_order/features/cart/data/models/cart_item.dart';
+import 'package:check_order/features/cart/domain/usecases/cart_usecase.dart';
+import 'package:check_order/features/home/data/models/menu_item.dart';
 
 class CartProvider extends BaseProvider {
   final CartUseCase _useCase;
