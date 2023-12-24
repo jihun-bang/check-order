@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint
+
 part of 'table_info_model.dart';
 
 // **************************************************************************
@@ -85,10 +87,26 @@ extension $TableInfoModelCopyWith on TableInfoModel {
 
 TableInfoModel _$TableInfoModelFromJson(Map<String, dynamic> json) =>
     TableInfoModel(
-      ipAddress: json['ip_address'] as String,
-      tableName: json['table_name'] as String,
-      description: json['description'] as String,
+      ipAddress: json['ip_address'] as String? ?? '',
+      tableName: json['table_name'] as String? ?? '',
+      description: json['description'] as String? ?? '',
     );
+
+const _$TableInfoModelFieldMap = <String, String>{
+  'ipAddress': 'ip_address',
+  'tableName': 'table_name',
+  'description': 'description',
+};
+
+// ignore: unused_element
+abstract class _$TableInfoModelPerFieldToJson {
+  // ignore: unused_element
+  static Object? ipAddress(String instance) => instance;
+  // ignore: unused_element
+  static Object? tableName(String instance) => instance;
+  // ignore: unused_element
+  static Object? description(String instance) => instance;
+}
 
 Map<String, dynamic> _$TableInfoModelToJson(TableInfoModel instance) =>
     <String, dynamic>{

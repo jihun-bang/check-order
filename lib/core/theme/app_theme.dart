@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 
-final appTheme = ThemeData(
+import 'colors.dart';
+
+final kAppTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   fontFamily: 'Pretendard',
-  textTheme: const TextTheme(
-    headlineLarge: TextStyle(color: Color(0xFF2B2B2B)),
-    headlineMedium: TextStyle(color: Color(0xFF2B2B2B)),
-    headlineSmall: TextStyle(color: Color(0xFF2B2B2B)),
-    titleLarge: TextStyle(color: Color(0xFF2B2B2B)),
-    titleMedium: TextStyle(color: Color(0xFF2B2B2B)),
-    titleSmall: TextStyle(color: Color(0xFF2B2B2B)),
-    bodyLarge: TextStyle(color: Color(0xFF2B2B2B)),
-    bodyMedium: TextStyle(color: Color(0xFF2B2B2B)),
-    bodySmall: TextStyle(color: Color(0xFF2B2B2B)),
-    labelLarge: TextStyle(color: Color(0xFF2B2B2B)),
-    labelMedium: TextStyle(color: Color(0xFF2B2B2B)),
+  primaryColor: AppColors.primary,
+  appBarTheme: const AppBarTheme(
+    toolbarHeight: 44,
+    elevation: 0,
+    backgroundColor: Colors.white,
+    scrolledUnderElevation: 0,
   ),
-  primaryColor: kPrimaryColor,
 );
-
-const Color kPrimaryColor = Color(0xFFFF5D02);
-const Color kSecondaryColor = Color(0xFFFF8F28);

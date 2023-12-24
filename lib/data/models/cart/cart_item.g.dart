@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint
+
 part of 'cart_item.dart';
 
 // **************************************************************************
@@ -99,6 +101,25 @@ CartItemModel _$CartItemModelFromJson(Map<String, dynamic> json) =>
       count: json['count'] as int? ?? 1,
       updatedAt: DateTime.parse(json['updatedAt'] as String),
     );
+
+const _$CartItemModelFieldMap = <String, String>{
+  'id': 'id',
+  'item': 'item',
+  'count': 'count',
+  'updatedAt': 'updatedAt',
+};
+
+// ignore: unused_element
+abstract class _$CartItemModelPerFieldToJson {
+  // ignore: unused_element
+  static Object? id(String instance) => instance;
+  // ignore: unused_element
+  static Object? item(MenuItemModel instance) => instance.toJson();
+  // ignore: unused_element
+  static Object? count(int instance) => instance;
+  // ignore: unused_element
+  static Object? updatedAt(DateTime instance) => instance.toIso8601String();
+}
 
 Map<String, dynamic> _$CartItemModelToJson(CartItemModel instance) =>
     <String, dynamic>{

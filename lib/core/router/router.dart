@@ -1,14 +1,14 @@
 import 'package:check_order/core/router/route_list.dart';
 import 'package:check_order/data/service/auth_service.dart';
-import 'package:check_order/presentation/pages/home/home_page.dart';
-import 'package:check_order/presentation/pages/registration/table_admin_page.dart';
-import 'package:check_order/presentation/pages/registration/table_password_page.dart';
-import 'package:check_order/presentation/pages/registration/table_registration_page.dart';
+import 'package:check_order/features/home/presentation/pages/home_page.dart';
+import 'package:check_order/features/registration/presentation/pages/table_admin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../dependencies_injection.dart';
-import '../../presentation/pages/landing/landing_page.dart';
+import '../../features/landing/presentation/pages/landing_page.dart';
+import '../../features/registration/presentation/pages/table_password_page.dart';
+import '../../features/registration/presentation/pages/table_registration_page.dart';
 import '../utils/logger.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

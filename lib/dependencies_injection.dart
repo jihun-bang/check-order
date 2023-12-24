@@ -3,10 +3,10 @@ import 'package:check_order/domain/usecases/cart/cart_usecase.dart';
 import 'package:check_order/domain/usecases/employee_call/employee_call_usecase.dart';
 import 'package:check_order/domain/usecases/home/menu_usecase.dart';
 import 'package:check_order/domain/usecases/order/order_usecase.dart';
-import 'package:check_order/presentation/providers/cart/cart_provider.dart';
-import 'package:check_order/presentation/providers/employee_call/employee_call_provider.dart';
-import 'package:check_order/presentation/providers/home/menu_provider.dart';
-import 'package:check_order/presentation/providers/order/order_provider.dart';
+import 'package:check_order/features/cart/presentation/providers/cart_provider.dart';
+import 'package:check_order/features/employee_call/presentation/providers/employee_call_provider.dart';
+import 'package:check_order/features/home/presentation/providers/menu_provider.dart';
+import 'package:check_order/features/order/presentation/providers/order_provider.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt sl = GetIt.instance;
