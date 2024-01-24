@@ -16,7 +16,7 @@ dependencies:
   go_router: any
   logger:
   intl: any
-  provider:
+  provider: any
   flutter_svg: any
   cached_network_image: any
   copy_with_extension: any
