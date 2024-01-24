@@ -9,8 +9,6 @@ part of 'table_info_model.dart';
 // **************************************************************************
 
 abstract class _$TableInfoModelCWProxy {
-  TableInfoModel ipAddress(String ipAddress);
-
   TableInfoModel tableName(String tableName);
 
   TableInfoModel description(String description);
@@ -22,7 +20,6 @@ abstract class _$TableInfoModelCWProxy {
   /// TableInfoModel(...).copyWith(id: 12, name: "My name")
   /// ````
   TableInfoModel call({
-    String? ipAddress,
     String? tableName,
     String? description,
   });
@@ -33,9 +30,6 @@ class _$TableInfoModelCWProxyImpl implements _$TableInfoModelCWProxy {
   const _$TableInfoModelCWProxyImpl(this._value);
 
   final TableInfoModel _value;
-
-  @override
-  TableInfoModel ipAddress(String ipAddress) => this(ipAddress: ipAddress);
 
   @override
   TableInfoModel tableName(String tableName) => this(tableName: tableName);
@@ -53,15 +47,10 @@ class _$TableInfoModelCWProxyImpl implements _$TableInfoModelCWProxy {
   /// TableInfoModel(...).copyWith(id: 12, name: "My name")
   /// ````
   TableInfoModel call({
-    Object? ipAddress = const $CopyWithPlaceholder(),
     Object? tableName = const $CopyWithPlaceholder(),
     Object? description = const $CopyWithPlaceholder(),
   }) {
     return TableInfoModel(
-      ipAddress: ipAddress == const $CopyWithPlaceholder() || ipAddress == null
-          ? _value.ipAddress
-          // ignore: cast_nullable_to_non_nullable
-          : ipAddress as String,
       tableName: tableName == const $CopyWithPlaceholder() || tableName == null
           ? _value.tableName
           // ignore: cast_nullable_to_non_nullable
@@ -87,21 +76,17 @@ extension $TableInfoModelCopyWith on TableInfoModel {
 
 TableInfoModel _$TableInfoModelFromJson(Map<String, dynamic> json) =>
     TableInfoModel(
-      ipAddress: json['ip_address'] as String? ?? '',
       tableName: json['table_name'] as String? ?? '',
       description: json['description'] as String? ?? '',
     );
 
 const _$TableInfoModelFieldMap = <String, String>{
-  'ipAddress': 'ip_address',
   'tableName': 'table_name',
   'description': 'description',
 };
 
 // ignore: unused_element
 abstract class _$TableInfoModelPerFieldToJson {
-  // ignore: unused_element
-  static Object? ipAddress(String instance) => instance;
   // ignore: unused_element
   static Object? tableName(String instance) => instance;
   // ignore: unused_element
@@ -110,7 +95,6 @@ abstract class _$TableInfoModelPerFieldToJson {
 
 Map<String, dynamic> _$TableInfoModelToJson(TableInfoModel instance) =>
     <String, dynamic>{
-      'ip_address': instance.ipAddress,
       'table_name': instance.tableName,
       'description': instance.description,
     };

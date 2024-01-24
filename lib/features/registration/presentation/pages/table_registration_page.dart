@@ -50,7 +50,6 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _ip,
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: _tableName,
@@ -75,16 +74,6 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
           const PageInfoLabel(label: '테이블 등록'),
         ],
       ),
-    );
-  }
-
-  Widget get _ip {
-    return AppTextField(
-      label: 'IP 주소',
-      hintText: '128.0.0.1',
-      onChanged: (value) {
-        _auth.update(_auth.tableInfo.copyWith(ipAddress: value));
-      },
     );
   }
 

@@ -58,7 +58,6 @@ class _TableAdminPageState extends State<TableAdminPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _ip,
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: _tableName,
@@ -90,17 +89,6 @@ class _TableAdminPageState extends State<TableAdminPage> {
           SvgPicture.asset('assets/icons/icon_logo_h.svg'),
           const PageInfoLabel(label: '테이블 등록'),
         ],
-      ),
-    );
-  }
-
-  Widget get _ip {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: AppTextField(
-        label: 'IP 주소',
-        initText: _tableInfo.ipAddress,
-        enabled: false,
       ),
     );
   }
