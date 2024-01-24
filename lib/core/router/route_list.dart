@@ -3,8 +3,8 @@ enum RouteList {
   landing('/landing'),
   signIn('/sign-in'),
   tableRegistration('/table-registration'),
-  tablePassword('table-password'),
-  admin('admin');
+  tablePassword('/table-password'),
+  admin('/admin');
 
   const RouteList(this.path);
 

@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
         _logoClickCounter++;
         if (_logoClickCounter == 5) {
           _logoClickCounter = 0;
-          context.pushNamed(RouteList.tablePassword.name);
+          context.goNamed(RouteList.tablePassword.name);
         } else {
           setState(() {
             _pageController.jumpToPage(0);

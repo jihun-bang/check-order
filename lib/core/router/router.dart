@@ -84,25 +84,24 @@ final routes = [
     },
   ),
   GoRoute(
-      path: RouteList.home.path,
-      name: RouteList.home.name,
-      builder: (context, state) {
-        return const HomePage();
-      },
-      routes: [
-        GoRoute(
-          path: RouteList.tablePassword.path,
-          name: RouteList.tablePassword.name,
-          builder: (context, state) {
-            return const TablePasswordPage();
-          },
-        ),
-        GoRoute(
-          path: RouteList.admin.path,
-          name: RouteList.admin.name,
-          builder: (context, state) {
-            return const TableAdminPage();
-          },
-        ),
-      ]),
+    path: RouteList.tablePassword.path,
+    name: RouteList.tablePassword.name,
+    builder: (context, state) {
+      return const TablePasswordPage();
+    },
+  ),
+  GoRoute(
+    path: RouteList.admin.path,
+    name: RouteList.admin.name,
+    builder: (context, state) {
+      return const TableAdminPage();
+    },
+  ),
+  GoRoute(
+    path: RouteList.home.path,
+    name: RouteList.home.name,
+    builder: (context, state) {
+      return const HomePage();
+    },
+  ),
 ];
