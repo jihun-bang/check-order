@@ -6,10 +6,12 @@ import 'package:check_order/features/home/presentation/providers/menu_provider.d
 import 'package:check_order/features/order/presentation/providers/order_provider.dart';
 import 'package:check_order/features/registration/data/models/table_info_model.dart';
 import 'package:flutter/widgets.dart';
+import 'package:injectable/injectable.dart';
 
 import '../dependencies_injection.dart';
 import '../main.dart';
 
+@singleton
 class AuthService extends ChangeNotifier {
   TableInfoModel _tableInfo = TableInfoModel();
   TableInfoModel get tableInfo => _tableInfo;
@@ -23,6 +25,7 @@ class AuthService extends ChangeNotifier {
     notifyListeners();
   }
 
+  @PostConstruct(preResolve: true)
   Future<void> getTable() async {
     await storage.read(key: 'tableInfo').then((value) {
       if (value != null) {

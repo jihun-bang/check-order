@@ -14,7 +14,7 @@ class TableInfoModel {
     this.description = '',
   });
 
-  bool get isValid => tableName.isNotEmpty;
+  bool get isValid => tableName.trim().isNotEmpty;
 
   factory TableInfoModel.fromJson(Map<String, dynamic> json) =>
       _$TableInfoModelFromJson(json);

@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:check_order/core/data/local/datasource/auth_storage.dart'
-    as _i8;
+    as _i9;
 import 'package:check_order/core/data/local/storage/storage.dart' as _i4;
 import 'package:check_order/core/data/remote/datasource/auth_remote_data_source.dart'
     as _i5;
@@ -17,8 +17,9 @@ import 'package:check_order/core/data/remote/repositories/auth_repository_impl.d
     as _i7;
 import 'package:check_order/core/domain/repositories/auth_repository.dart'
     as _i6;
-import 'package:check_order/core/domain/usecases/auth_usecase.dart' as _i9;
+import 'package:check_order/core/domain/usecases/auth_usecase.dart' as _i10;
 import 'package:check_order/core/theme/colors.dart' as _i3;
+import 'package:check_order/services/auth_service.dart' as _i8;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -44,10 +45,17 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i5.AuthDataSource>(() => _i5.AuthDataSourceImpl());
     gh.factory<_i6.AuthRepository>(
         () => _i7.AuthRepositoryImpl(gh<_i5.AuthDataSource>()));
-    gh.singleton<_i8.AuthStorage>(_i8.AuthStorage(gh<_i4.AppStorage>()));
-    gh.factory<_i9.AuthUseCase>(() => _i9.AuthUseCase(
+    await gh.singletonAsync<_i8.AuthService>(
+      () {
+        final i = _i8.AuthService();
+        return i.getTable().then((_) => i);
+      },
+      preResolve: true,
+    );
+    gh.singleton<_i9.AuthStorage>(_i9.AuthStorage(gh<_i4.AppStorage>()));
+    gh.factory<_i10.AuthUseCase>(() => _i10.AuthUseCase(
           gh<_i6.AuthRepository>(),
-          gh<_i8.AuthStorage>(),
+          gh<_i9.AuthStorage>(),
         ));
     return this;
   }

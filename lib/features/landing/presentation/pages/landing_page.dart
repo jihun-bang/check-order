@@ -77,7 +77,7 @@ class _LandingPageState extends State<LandingPage> {
                   width: 433,
                   buttonColor: AppColors.secondary,
                   onTap: () {
-                    context.goNamed(RouteList.tableRegistration.name);
+                    context.goNamed(RouteList.signIn.name);
                   },
                 )
               ],

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:check_order/services/auth_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../configs/app_configs.dart';
@@ -35,6 +36,7 @@ class Auth extends _$Auth {
 
   Future<void> signOut() async {
     state = AsyncData(await _useCase.logout());
+    await getIt<AuthService>().logOut();
   }
 
   Future<UserModel> signIn(SignInRequestModel model) async {
