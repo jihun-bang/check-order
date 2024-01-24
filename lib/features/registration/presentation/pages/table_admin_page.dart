@@ -3,8 +3,10 @@ import 'package:check_order/core/widgets/text_field/app_text_field.dart';
 import 'package:check_order/features/dialog/show_logo_message_toast.dart';
 import 'package:check_order/features/dialog/show_message_toast.dart';
 import 'package:check_order/features/registration/data/models/table_info_model.dart';
+import 'package:check_order/services/auth_provider.dart';
 import 'package:check_order/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as r;
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,16 +27,13 @@ class _TableAdminPageState extends State<TableAdminPage> {
   final _auth = sl<AuthService>();
   late TableInfoModel _tableInfo;
 
-  Future<void> _reset() async {
+  Future<void> _reset(r.WidgetRef ref) async {
+    showLogoMessageToast(context: context, message: '연동 해제 중입니다...');
     await _auth.logOut();
+    await ref.read(authProvider.notifier).signOut();
     if (mounted) {
-      showLogoMessageToast(context: context, message: '연동 해제 중입니다...');
-      await Future.delayed(const Duration(seconds: 2)).then((_) {
-        if (true) {
-          showLogoMessageToast(context: context, message: '연동이 해제 되었습니다.');
-          context.goNamed(RouteList.home.name);
-        }
-      });
+      showLogoMessageToast(context: context, message: '연동이 해제 되었습니다.');
+      context.goNamed(RouteList.landing.name);
     }
   }
 
@@ -172,13 +171,15 @@ class _TableAdminPageState extends State<TableAdminPage> {
   }
 
   Widget get _buildReset {
-    return AppButton(
-        label: '테이블 연동 해제',
-        buttonColor: AppColors.primary,
-        width: 268,
-        onTap: () async {
-          await _reset();
-        });
+    return r.Consumer(builder: (context, ref, _) {
+      return AppButton(
+          label: '테이블 연동 해제',
+          buttonColor: AppColors.primary,
+          width: 268,
+          onTap: () async {
+            await _reset(ref);
+          });
+    });
   }
 
   Widget get _buildBack {

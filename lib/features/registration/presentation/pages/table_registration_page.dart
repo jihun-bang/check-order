@@ -24,16 +24,12 @@ class _TableRegistrationPageState extends State<TableRegistrationPage> {
   final _auth = sl<AuthService>();
 
   Future<void> _tableRegistration() async {
+    showLogoMessageToast(context: context, message: '연결중입니다...');
     final success = await _auth.save();
-    if (mounted) {
+    if (mounted && success) {
       if (success) {
-        showLogoMessageToast(context: context, message: '연결중입니다...');
-        await Future.delayed(const Duration(seconds: 1)).then((_) {
-          if (true) {
-            showLogoMessageToast(context: context, message: '성공적으로 연결되었습니다.');
-            context.goNamed(RouteList.home.name);
-          }
-        });
+        showLogoMessageToast(context: context, message: '성공적으로 연결되었습니다.');
+        context.goNamed(RouteList.home.name);
       } else {
         showLogoMessageToast(context: context, message: '연결을 실패했습니다.');
       }
