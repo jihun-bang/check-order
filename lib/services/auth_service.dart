@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:check_order/core/data/remote/models/user/user_model.dart';
 import 'package:check_order/features/cart/presentation/providers/cart_provider.dart';
 import 'package:check_order/features/employee_call/presentation/providers/employee_call_provider.dart';
 import 'package:check_order/features/home/presentation/providers/menu_provider.dart';
@@ -13,6 +14,8 @@ import '../main.dart';
 
 @singleton
 class AuthService extends ChangeNotifier {
+  SignedIn? user;
+
   TableInfoModel _tableInfo = TableInfoModel();
   TableInfoModel get tableInfo => _tableInfo;
 

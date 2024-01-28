@@ -23,4 +23,6 @@ class CartItemModel {
       _$CartItemModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CartItemModelToJson(this);
+
+  int get amount => item.price * count;
 }

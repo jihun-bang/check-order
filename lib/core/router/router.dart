@@ -36,8 +36,10 @@ GoRouter router(RouterRef ref) {
     debugLogDiagnostics: true,
     routes: routes,
     redirect: (context, state) async {
+      final auth = getIt<AuthService>();
+      auth.user = ref.read(authProvider.notifier).currentUser;
       final isSigned = (isAuth.value.value ?? false);
-      final hasTable = getIt<AuthService>().tableInfo.isValid;
+      final hasTable = auth.tableInfo.isValid;
       if (isAuth.value.unwrapPrevious().hasError ||
           isAuth.value.isLoading ||
           !isAuth.value.hasValue) {

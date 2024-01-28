@@ -11,7 +11,7 @@ import '../core/utils/logger.dart';
 
 part 'auth_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class Auth extends _$Auth {
   late AuthUseCase _useCase;
 

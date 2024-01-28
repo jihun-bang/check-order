@@ -4,7 +4,6 @@ import 'package:check_order/features/employee_call/domain/usecases/employee_call
 import 'package:check_order/features/employee_call/presentation/providers/employee_call_provider.dart';
 import 'package:check_order/features/home/domain/usecases/menu_usecase.dart';
 import 'package:check_order/features/home/presentation/providers/menu_provider.dart';
-import 'package:check_order/features/order/domain/usecases/order_usecase.dart';
 import 'package:check_order/features/order/presentation/providers/order_provider.dart';
 import 'package:get_it/get_it.dart';
 
@@ -17,7 +16,6 @@ void setupLocator() {
 
   /// UseCase
   sl.registerLazySingleton<CartUseCase>(() => CartUseCase());
-  sl.registerLazySingleton<OrderUseCase>(() => OrderUseCase());
   sl.registerLazySingleton<EmployeeCallUseCase>(() => EmployeeCallUseCase());
   sl.registerLazySingleton<MenuUseCase>(() => MenuUseCase());
 
