@@ -16,7 +16,7 @@ class OrderModel with _$OrderModel {
     required String storeId,
     @Default(OrderStatus.wait) OrderStatus status,
     required String orderType,
-    required List<OrderItemModel> menus,
+    required List<OrderItemModel> items,
     required DateTime orderedAt,
     DateTime? acceptedAt,
     DateTime? declinedAt,
@@ -29,7 +29,7 @@ class OrderModel with _$OrderModel {
 }
 
 @JsonEnum(fieldRename: FieldRename.screamingSnake)
-enum OrderStatus { wait, declined, completed }
+enum OrderStatus { wait, accepted, declined, completed }
 
 @Collection<OrderModel>('orders')
 final ordersRef = OrderModelCollectionReference();

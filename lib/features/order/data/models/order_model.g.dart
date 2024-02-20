@@ -139,8 +139,8 @@ abstract class OrderModelDocumentReference
     FieldValue statusFieldValue,
     String orderType,
     FieldValue orderTypeFieldValue,
-    List<OrderItemModel> menus,
-    FieldValue menusFieldValue,
+    List<OrderItemModel> items,
+    FieldValue itemsFieldValue,
     DateTime orderedAt,
     FieldValue orderedAtFieldValue,
     DateTime? acceptedAt,
@@ -166,8 +166,8 @@ abstract class OrderModelDocumentReference
     FieldValue statusFieldValue,
     String orderType,
     FieldValue orderTypeFieldValue,
-    List<OrderItemModel> menus,
-    FieldValue menusFieldValue,
+    List<OrderItemModel> items,
+    FieldValue itemsFieldValue,
     DateTime orderedAt,
     FieldValue orderedAtFieldValue,
     DateTime? acceptedAt,
@@ -218,8 +218,8 @@ class _$OrderModelDocumentReference
     FieldValue? statusFieldValue,
     Object? orderType = _sentinel,
     FieldValue? orderTypeFieldValue,
-    Object? menus = _sentinel,
-    FieldValue? menusFieldValue,
+    Object? items = _sentinel,
+    FieldValue? itemsFieldValue,
     Object? orderedAt = _sentinel,
     FieldValue? orderedAtFieldValue,
     Object? acceptedAt = _sentinel,
@@ -248,8 +248,8 @@ class _$OrderModelDocumentReference
       "Cannot specify both orderType and orderTypeFieldValue",
     );
     assert(
-      menus == _sentinel || menusFieldValue == null,
-      "Cannot specify both menus and menusFieldValue",
+      items == _sentinel || itemsFieldValue == null,
+      "Cannot specify both items and itemsFieldValue",
     );
     assert(
       orderedAt == _sentinel || orderedAtFieldValue == null,
@@ -292,11 +292,11 @@ class _$OrderModelDocumentReference
             _$$OrderModelImplPerFieldToJson.orderType(orderType as String),
       if (orderTypeFieldValue != null)
         _$$OrderModelImplFieldMap['orderType']!: orderTypeFieldValue,
-      if (menus != _sentinel)
-        _$$OrderModelImplFieldMap['menus']!: _$$OrderModelImplPerFieldToJson
-            .menus(menus as List<OrderItemModel>),
-      if (menusFieldValue != null)
-        _$$OrderModelImplFieldMap['menus']!: menusFieldValue,
+      if (items != _sentinel)
+        _$$OrderModelImplFieldMap['items']!: _$$OrderModelImplPerFieldToJson
+            .items(items as List<OrderItemModel>),
+      if (itemsFieldValue != null)
+        _$$OrderModelImplFieldMap['items']!: itemsFieldValue,
       if (orderedAt != _sentinel)
         _$$OrderModelImplFieldMap['orderedAt']!:
             _$$OrderModelImplPerFieldToJson.orderedAt(orderedAt as DateTime),
@@ -338,8 +338,8 @@ class _$OrderModelDocumentReference
     FieldValue? statusFieldValue,
     Object? orderType = _sentinel,
     FieldValue? orderTypeFieldValue,
-    Object? menus = _sentinel,
-    FieldValue? menusFieldValue,
+    Object? items = _sentinel,
+    FieldValue? itemsFieldValue,
     Object? orderedAt = _sentinel,
     FieldValue? orderedAtFieldValue,
     Object? acceptedAt = _sentinel,
@@ -368,8 +368,8 @@ class _$OrderModelDocumentReference
       "Cannot specify both orderType and orderTypeFieldValue",
     );
     assert(
-      menus == _sentinel || menusFieldValue == null,
-      "Cannot specify both menus and menusFieldValue",
+      items == _sentinel || itemsFieldValue == null,
+      "Cannot specify both items and itemsFieldValue",
     );
     assert(
       orderedAt == _sentinel || orderedAtFieldValue == null,
@@ -412,11 +412,11 @@ class _$OrderModelDocumentReference
             _$$OrderModelImplPerFieldToJson.orderType(orderType as String),
       if (orderTypeFieldValue != null)
         _$$OrderModelImplFieldMap['orderType']!: orderTypeFieldValue,
-      if (menus != _sentinel)
-        _$$OrderModelImplFieldMap['menus']!: _$$OrderModelImplPerFieldToJson
-            .menus(menus as List<OrderItemModel>),
-      if (menusFieldValue != null)
-        _$$OrderModelImplFieldMap['menus']!: menusFieldValue,
+      if (items != _sentinel)
+        _$$OrderModelImplFieldMap['items']!: _$$OrderModelImplPerFieldToJson
+            .items(items as List<OrderItemModel>),
+      if (itemsFieldValue != null)
+        _$$OrderModelImplFieldMap['items']!: itemsFieldValue,
       if (orderedAt != _sentinel)
         _$$OrderModelImplFieldMap['orderedAt']!:
             _$$OrderModelImplPerFieldToJson.orderedAt(orderedAt as DateTime),
@@ -588,7 +588,7 @@ abstract class OrderModelQuery
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  OrderModelQuery whereMenus({
+  OrderModelQuery whereItems({
     List<OrderItemModel>? isEqualTo,
     List<OrderItemModel>? isNotEqualTo,
     List<OrderItemModel>? isLessThan,
@@ -715,7 +715,7 @@ abstract class OrderModelQuery
     OrderModelDocumentSnapshot? startAfterDocument,
   });
 
-  OrderModelQuery orderByMenus({
+  OrderModelQuery orderByItems({
     bool descending = false,
     List<OrderItemModel> startAt,
     List<OrderItemModel> startAfter,
@@ -1150,7 +1150,7 @@ class _$OrderModelQuery
     );
   }
 
-  OrderModelQuery whereMenus({
+  OrderModelQuery whereItems({
     Object? isEqualTo = notSetQueryParam,
     Object? isNotEqualTo = notSetQueryParam,
     Object? isLessThan = null,
@@ -1164,39 +1164,39 @@ class _$OrderModelQuery
     return _$OrderModelQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['menus']!,
+        _$$OrderModelImplFieldMap['items']!,
         isEqualTo: isEqualTo != notSetQueryParam
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isEqualTo as List<OrderItemModel>)
+                .items(isEqualTo as List<OrderItemModel>)
             : notSetQueryParam,
         isNotEqualTo: isNotEqualTo != notSetQueryParam
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isNotEqualTo as List<OrderItemModel>)
+                .items(isNotEqualTo as List<OrderItemModel>)
             : notSetQueryParam,
         isLessThan: isLessThan != null
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isLessThan as List<OrderItemModel>)
+                .items(isLessThan as List<OrderItemModel>)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isLessThanOrEqualTo as List<OrderItemModel>)
+                .items(isLessThanOrEqualTo as List<OrderItemModel>)
             : null,
         isGreaterThan: isGreaterThan != null
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isGreaterThan as List<OrderItemModel>)
+                .items(isGreaterThan as List<OrderItemModel>)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
             ? _$$OrderModelImplPerFieldToJson
-                .menus(isGreaterThanOrEqualTo as List<OrderItemModel>)
+                .items(isGreaterThanOrEqualTo as List<OrderItemModel>)
             : null,
         isNull: isNull,
         arrayContains: arrayContains != null
             ? (_$$OrderModelImplPerFieldToJson
-                    .menus([arrayContains as OrderItemModel]) as List?)!
+                    .items([arrayContains as OrderItemModel]) as List?)!
                 .single
             : null,
         arrayContainsAny: arrayContainsAny != null
-            ? _$$OrderModelImplPerFieldToJson.menus(arrayContainsAny)
+            ? _$$OrderModelImplPerFieldToJson.items(arrayContainsAny)
                 as Iterable<Object>?
             : null,
       ),
@@ -1803,7 +1803,7 @@ class _$OrderModelQuery
     );
   }
 
-  OrderModelQuery orderByMenus({
+  OrderModelQuery orderByItems({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -1815,7 +1815,7 @@ class _$OrderModelQuery
     OrderModelDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$$OrderModelImplFieldMap['menus']!, descending: descending);
+        .orderBy(_$$OrderModelImplFieldMap['items']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -2346,7 +2346,7 @@ _$OrderModelImpl _$$OrderModelImplFromJson(Map<String, dynamic> json) =>
       status: $enumDecodeNullable(_$OrderStatusEnumMap, json['status']) ??
           OrderStatus.wait,
       orderType: json['order_type'] as String,
-      menus: (json['menus'] as List<dynamic>)
+      items: (json['items'] as List<dynamic>)
           .map((e) => OrderItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       orderedAt: DateTime.parse(json['ordered_at'] as String),
@@ -2368,7 +2368,7 @@ const _$$OrderModelImplFieldMap = <String, String>{
   'storeId': 'store_id',
   'status': 'status',
   'orderType': 'order_type',
-  'menus': 'menus',
+  'items': 'items',
   'orderedAt': 'ordered_at',
   'acceptedAt': 'accepted_at',
   'declinedAt': 'declined_at',
@@ -2390,7 +2390,7 @@ abstract class _$$OrderModelImplPerFieldToJson {
   // ignore: unused_element
   static Object? orderType(String instance) => instance;
   // ignore: unused_element
-  static Object? menus(List<OrderItemModel> instance) =>
+  static Object? items(List<OrderItemModel> instance) =>
       instance.map((e) => e.toJson()).toList();
   // ignore: unused_element
   static Object? orderedAt(DateTime instance) => instance.toIso8601String();
@@ -2411,7 +2411,7 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
       'store_id': instance.storeId,
       'status': _$OrderStatusEnumMap[instance.status]!,
       'order_type': instance.orderType,
-      'menus': instance.menus.map((e) => e.toJson()).toList(),
+      'items': instance.items.map((e) => e.toJson()).toList(),
       'ordered_at': instance.orderedAt.toIso8601String(),
       'accepted_at': instance.acceptedAt?.toIso8601String(),
       'declined_at': instance.declinedAt?.toIso8601String(),
@@ -2421,6 +2421,7 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
 
 const _$OrderStatusEnumMap = {
   OrderStatus.wait: 'WAIT',
+  OrderStatus.accepted: 'ACCEPTED',
   OrderStatus.declined: 'DECLINED',
   OrderStatus.completed: 'COMPLETED',
 };

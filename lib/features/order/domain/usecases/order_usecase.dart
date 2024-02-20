@@ -48,7 +48,7 @@ class OrderUseCase {
               tableName: table.tableName,
               storeId: user.email,
               orderType: '메뉴',
-              menus: _toOrderItems(cartItems: cartItems),
+              items: _toOrderItems(cartItems: cartItems),
               orderedAt: DateTime.now(),
               totalAmount: cartItems.map((e) => e.amount).sum));
     } else {

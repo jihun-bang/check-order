@@ -26,7 +26,7 @@ mixin _$OrderModel {
   String get storeId => throw _privateConstructorUsedError;
   OrderStatus get status => throw _privateConstructorUsedError;
   String get orderType => throw _privateConstructorUsedError;
-  List<OrderItemModel> get menus => throw _privateConstructorUsedError;
+  List<OrderItemModel> get items => throw _privateConstructorUsedError;
   DateTime get orderedAt => throw _privateConstructorUsedError;
   DateTime? get acceptedAt => throw _privateConstructorUsedError;
   DateTime? get declinedAt => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $OrderModelCopyWith<$Res> {
       String storeId,
       OrderStatus status,
       String orderType,
-      List<OrderItemModel> menus,
+      List<OrderItemModel> items,
       DateTime orderedAt,
       DateTime? acceptedAt,
       DateTime? declinedAt,
@@ -77,7 +77,7 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
     Object? storeId = null,
     Object? status = null,
     Object? orderType = null,
-    Object? menus = null,
+    Object? items = null,
     Object? orderedAt = null,
     Object? acceptedAt = freezed,
     Object? declinedAt = freezed,
@@ -105,9 +105,9 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as String,
-      menus: null == menus
-          ? _value.menus
-          : menus // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<OrderItemModel>,
       orderedAt: null == orderedAt
           ? _value.orderedAt
@@ -147,7 +147,7 @@ abstract class _$$OrderModelImplCopyWith<$Res>
       String storeId,
       OrderStatus status,
       String orderType,
-      List<OrderItemModel> menus,
+      List<OrderItemModel> items,
       DateTime orderedAt,
       DateTime? acceptedAt,
       DateTime? declinedAt,
@@ -171,7 +171,7 @@ class __$$OrderModelImplCopyWithImpl<$Res>
     Object? storeId = null,
     Object? status = null,
     Object? orderType = null,
-    Object? menus = null,
+    Object? items = null,
     Object? orderedAt = null,
     Object? acceptedAt = freezed,
     Object? declinedAt = freezed,
@@ -199,9 +199,9 @@ class __$$OrderModelImplCopyWithImpl<$Res>
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as String,
-      menus: null == menus
-          ? _value._menus
-          : menus // ignore: cast_nullable_to_non_nullable
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<OrderItemModel>,
       orderedAt: null == orderedAt
           ? _value.orderedAt
@@ -237,13 +237,13 @@ class _$OrderModelImpl implements _OrderModel {
       required this.storeId,
       this.status = OrderStatus.wait,
       required this.orderType,
-      required final List<OrderItemModel> menus,
+      required final List<OrderItemModel> items,
       required this.orderedAt,
       this.acceptedAt,
       this.declinedAt,
       this.completedAt,
       required this.totalAmount})
-      : _menus = menus;
+      : _items = items;
 
   factory _$OrderModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderModelImplFromJson(json);
@@ -261,12 +261,12 @@ class _$OrderModelImpl implements _OrderModel {
   final OrderStatus status;
   @override
   final String orderType;
-  final List<OrderItemModel> _menus;
+  final List<OrderItemModel> _items;
   @override
-  List<OrderItemModel> get menus {
-    if (_menus is EqualUnmodifiableListView) return _menus;
+  List<OrderItemModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_menus);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
@@ -282,7 +282,7 @@ class _$OrderModelImpl implements _OrderModel {
 
   @override
   String toString() {
-    return 'OrderModel(id: $id, tableName: $tableName, storeId: $storeId, status: $status, orderType: $orderType, menus: $menus, orderedAt: $orderedAt, acceptedAt: $acceptedAt, declinedAt: $declinedAt, completedAt: $completedAt, totalAmount: $totalAmount)';
+    return 'OrderModel(id: $id, tableName: $tableName, storeId: $storeId, status: $status, orderType: $orderType, items: $items, orderedAt: $orderedAt, acceptedAt: $acceptedAt, declinedAt: $declinedAt, completedAt: $completedAt, totalAmount: $totalAmount)';
   }
 
   @override
@@ -297,7 +297,7 @@ class _$OrderModelImpl implements _OrderModel {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.orderType, orderType) ||
                 other.orderType == orderType) &&
-            const DeepCollectionEquality().equals(other._menus, _menus) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.orderedAt, orderedAt) ||
                 other.orderedAt == orderedAt) &&
             (identical(other.acceptedAt, acceptedAt) ||
@@ -319,7 +319,7 @@ class _$OrderModelImpl implements _OrderModel {
       storeId,
       status,
       orderType,
-      const DeepCollectionEquality().hash(_menus),
+      const DeepCollectionEquality().hash(_items),
       orderedAt,
       acceptedAt,
       declinedAt,
@@ -347,7 +347,7 @@ abstract class _OrderModel implements OrderModel {
       required final String storeId,
       final OrderStatus status,
       required final String orderType,
-      required final List<OrderItemModel> menus,
+      required final List<OrderItemModel> items,
       required final DateTime orderedAt,
       final DateTime? acceptedAt,
       final DateTime? declinedAt,
@@ -369,7 +369,7 @@ abstract class _OrderModel implements OrderModel {
   @override
   String get orderType;
   @override
-  List<OrderItemModel> get menus;
+  List<OrderItemModel> get items;
   @override
   DateTime get orderedAt;
   @override
