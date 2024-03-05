@@ -468,6 +468,170 @@ abstract class OrderModelQuery
   @override
   OrderModelQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  OrderModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereTableName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereStoreId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereStatus({
+    OrderStatus? isEqualTo,
+    OrderStatus? isNotEqualTo,
+    OrderStatus? isLessThan,
+    OrderStatus? isLessThanOrEqualTo,
+    OrderStatus? isGreaterThan,
+    OrderStatus? isGreaterThanOrEqualTo,
+    List<OrderStatus>? whereIn,
+    List<OrderStatus>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereOrderType({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereItems({
+    List<OrderItemModel>? isEqualTo,
+    List<OrderItemModel>? isNotEqualTo,
+    List<OrderItemModel>? isLessThan,
+    List<OrderItemModel>? isLessThanOrEqualTo,
+    List<OrderItemModel>? isGreaterThan,
+    List<OrderItemModel>? isGreaterThanOrEqualTo,
+    OrderItemModel? arrayContains,
+    List<OrderItemModel>? arrayContainsAny,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereOrderedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereAcceptedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereDeclinedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereCompletedAt({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  });
+
+  OrderModelQuery whereTotalAmount({
+    int? isEqualTo,
+    int? isNotEqualTo,
+    int? isLessThan,
+    int? isLessThanOrEqualTo,
+    int? isGreaterThan,
+    int? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -489,170 +653,16 @@ abstract class OrderModelQuery
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   OrderModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     OrderModelDocumentSnapshot? startAtDocument,
     OrderModelDocumentSnapshot? endAtDocument,
     OrderModelDocumentSnapshot? endBeforeDocument,
     OrderModelDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  OrderModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  OrderModelQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrderModelQuery whereTableName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrderModelQuery whereStoreId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrderModelQuery whereStatus({
-    OrderStatus? isEqualTo,
-    OrderStatus? isNotEqualTo,
-    OrderStatus? isLessThan,
-    OrderStatus? isLessThanOrEqualTo,
-    OrderStatus? isGreaterThan,
-    OrderStatus? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<OrderStatus>? whereIn,
-    List<OrderStatus>? whereNotIn,
-  });
-  OrderModelQuery whereOrderType({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  OrderModelQuery whereItems({
-    List<OrderItemModel>? isEqualTo,
-    List<OrderItemModel>? isNotEqualTo,
-    List<OrderItemModel>? isLessThan,
-    List<OrderItemModel>? isLessThanOrEqualTo,
-    List<OrderItemModel>? isGreaterThan,
-    List<OrderItemModel>? isGreaterThanOrEqualTo,
-    bool? isNull,
-    OrderItemModel? arrayContains,
-    List<OrderItemModel>? arrayContainsAny,
-  });
-  OrderModelQuery whereOrderedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  });
-  OrderModelQuery whereAcceptedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  });
-  OrderModelQuery whereDeclinedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  });
-  OrderModelQuery whereCompletedAt({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  });
-  OrderModelQuery whereTotalAmount({
-    int? isEqualTo,
-    int? isNotEqualTo,
-    int? isLessThan,
-    int? isLessThanOrEqualTo,
-    int? isGreaterThan,
-    int? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
   });
 
   OrderModelQuery orderByDocumentId({
@@ -834,8 +844,580 @@ class _$OrderModelQuery
     );
   }
 
+  @override
+  OrderModelQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereTableName({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['tableName']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.tableName(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.tableName(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.tableName(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .tableName(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson.tableName(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .tableName(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.tableName(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.tableName(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereStoreId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['storeId']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.storeId(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.storeId(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.storeId(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .storeId(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson.storeId(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .storeId(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.storeId(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$OrderModelImplPerFieldToJson.storeId(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereStatus({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<OrderStatus>? whereIn,
+    List<OrderStatus>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['status']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.status(isEqualTo as OrderStatus)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .status(isNotEqualTo as OrderStatus)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.status(isLessThan as OrderStatus)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .status(isLessThanOrEqualTo as OrderStatus)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .status(isGreaterThan as OrderStatus)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .status(isGreaterThanOrEqualTo as OrderStatus)
+            : null,
+        whereIn: whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.status(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$OrderModelImplPerFieldToJson.status(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereOrderType({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['orderType']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.orderType(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.orderType(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.orderType(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .orderType(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson.orderType(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .orderType(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.orderType(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.orderType(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereItems({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<OrderItemModel>? arrayContainsAny,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['items']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isEqualTo as List<OrderItemModel>)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isNotEqualTo as List<OrderItemModel>)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isLessThan as List<OrderItemModel>)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isLessThanOrEqualTo as List<OrderItemModel>)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isGreaterThan as List<OrderItemModel>)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .items(isGreaterThanOrEqualTo as List<OrderItemModel>)
+            : null,
+        arrayContains: arrayContains != null
+            ? (_$$OrderModelImplPerFieldToJson
+                    .items([arrayContains as OrderItemModel]) as List?)!
+                .single
+            : null,
+        arrayContainsAny: arrayContainsAny != null
+            ? _$$OrderModelImplPerFieldToJson.items(arrayContainsAny)
+                as Iterable<Object>?
+            : null,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereOrderedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime>? whereIn,
+    List<DateTime>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['orderedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.orderedAt(isEqualTo as DateTime)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .orderedAt(isNotEqualTo as DateTime)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.orderedAt(isLessThan as DateTime)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .orderedAt(isLessThanOrEqualTo as DateTime)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .orderedAt(isGreaterThan as DateTime)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .orderedAt(isGreaterThanOrEqualTo as DateTime)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.orderedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.orderedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereAcceptedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['acceptedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.acceptedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .acceptedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .acceptedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .acceptedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .acceptedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .acceptedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.acceptedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.acceptedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereDeclinedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['declinedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.declinedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .declinedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .declinedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .declinedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .declinedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .declinedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.declinedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.declinedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereCompletedAt({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['completedAt']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isEqualTo as DateTime?)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isNotEqualTo as DateTime?)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isLessThan as DateTime?)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isLessThanOrEqualTo as DateTime?)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isGreaterThan as DateTime?)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .completedAt(isGreaterThanOrEqualTo as DateTime?)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.completedAt(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.completedAt(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  OrderModelQuery whereTotalAmount({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<int>? whereIn,
+    List<int>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$OrderModelQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$OrderModelImplFieldMap['totalAmount']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.totalAmount(isEqualTo as int)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$OrderModelImplPerFieldToJson.totalAmount(isNotEqualTo as int)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$OrderModelImplPerFieldToJson.totalAmount(isLessThan as int)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .totalAmount(isLessThanOrEqualTo as int)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$OrderModelImplPerFieldToJson.totalAmount(isGreaterThan as int)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$OrderModelImplPerFieldToJson
+                .totalAmount(isGreaterThanOrEqualTo as int)
+            : null,
+        whereIn:
+            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.totalAmount(e)),
+        whereNotIn: whereNotIn
+            ?.map((e) => _$$OrderModelImplPerFieldToJson.totalAmount(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   OrderModelQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -899,6 +1481,7 @@ class _$OrderModelQuery
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$OrderModelQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -906,541 +1489,7 @@ class _$OrderModelQuery
     );
   }
 
-  OrderModelQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereTableName({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['tableName']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.tableName(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.tableName(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.tableName(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .tableName(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson.tableName(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .tableName(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.tableName(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.tableName(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereStoreId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['storeId']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.storeId(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.storeId(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.storeId(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .storeId(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson.storeId(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .storeId(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.storeId(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$OrderModelImplPerFieldToJson.storeId(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereStatus({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<OrderStatus>? whereIn,
-    List<OrderStatus>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['status']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.status(isEqualTo as OrderStatus)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .status(isNotEqualTo as OrderStatus)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.status(isLessThan as OrderStatus)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .status(isLessThanOrEqualTo as OrderStatus)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .status(isGreaterThan as OrderStatus)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .status(isGreaterThanOrEqualTo as OrderStatus)
-            : null,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.status(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$OrderModelImplPerFieldToJson.status(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereOrderType({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['orderType']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.orderType(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.orderType(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.orderType(isLessThan as String)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .orderType(isLessThanOrEqualTo as String)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson.orderType(isGreaterThan as String)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .orderType(isGreaterThanOrEqualTo as String)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.orderType(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.orderType(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereItems({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    Object? arrayContains = notSetQueryParam,
-    List<OrderItemModel>? arrayContainsAny,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['items']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isEqualTo as List<OrderItemModel>)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isNotEqualTo as List<OrderItemModel>)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isLessThan as List<OrderItemModel>)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isLessThanOrEqualTo as List<OrderItemModel>)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isGreaterThan as List<OrderItemModel>)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .items(isGreaterThanOrEqualTo as List<OrderItemModel>)
-            : null,
-        isNull: isNull,
-        arrayContains: arrayContains != null
-            ? (_$$OrderModelImplPerFieldToJson
-                    .items([arrayContains as OrderItemModel]) as List?)!
-                .single
-            : null,
-        arrayContainsAny: arrayContainsAny != null
-            ? _$$OrderModelImplPerFieldToJson.items(arrayContainsAny)
-                as Iterable<Object>?
-            : null,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereOrderedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime>? whereIn,
-    List<DateTime>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['orderedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.orderedAt(isEqualTo as DateTime)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .orderedAt(isNotEqualTo as DateTime)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.orderedAt(isLessThan as DateTime)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .orderedAt(isLessThanOrEqualTo as DateTime)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .orderedAt(isGreaterThan as DateTime)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .orderedAt(isGreaterThanOrEqualTo as DateTime)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.orderedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.orderedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereAcceptedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['acceptedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.acceptedAt(isEqualTo as DateTime?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .acceptedAt(isNotEqualTo as DateTime?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .acceptedAt(isLessThan as DateTime?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .acceptedAt(isLessThanOrEqualTo as DateTime?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .acceptedAt(isGreaterThan as DateTime?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .acceptedAt(isGreaterThanOrEqualTo as DateTime?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.acceptedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.acceptedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereDeclinedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['declinedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.declinedAt(isEqualTo as DateTime?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .declinedAt(isNotEqualTo as DateTime?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .declinedAt(isLessThan as DateTime?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .declinedAt(isLessThanOrEqualTo as DateTime?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .declinedAt(isGreaterThan as DateTime?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .declinedAt(isGreaterThanOrEqualTo as DateTime?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.declinedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.declinedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereCompletedAt({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<DateTime?>? whereIn,
-    List<DateTime?>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['completedAt']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isEqualTo as DateTime?)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isNotEqualTo as DateTime?)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isLessThan as DateTime?)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isLessThanOrEqualTo as DateTime?)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isGreaterThan as DateTime?)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .completedAt(isGreaterThanOrEqualTo as DateTime?)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.completedAt(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.completedAt(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  OrderModelQuery whereTotalAmount({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = null,
-    Object? isLessThanOrEqualTo = null,
-    Object? isGreaterThan = null,
-    Object? isGreaterThanOrEqualTo = null,
-    bool? isNull,
-    List<int>? whereIn,
-    List<int>? whereNotIn,
-  }) {
-    return _$OrderModelQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$OrderModelImplFieldMap['totalAmount']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.totalAmount(isEqualTo as int)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$OrderModelImplPerFieldToJson.totalAmount(isNotEqualTo as int)
-            : notSetQueryParam,
-        isLessThan: isLessThan != null
-            ? _$$OrderModelImplPerFieldToJson.totalAmount(isLessThan as int)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .totalAmount(isLessThanOrEqualTo as int)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$OrderModelImplPerFieldToJson.totalAmount(isGreaterThan as int)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$OrderModelImplPerFieldToJson
-                .totalAmount(isGreaterThanOrEqualTo as int)
-            : null,
-        isNull: isNull,
-        whereIn:
-            whereIn?.map((e) => _$$OrderModelImplPerFieldToJson.totalAmount(e)),
-        whereNotIn: whereNotIn
-            ?.map((e) => _$$OrderModelImplPerFieldToJson.totalAmount(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   OrderModelQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1513,6 +1562,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByTableName({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1586,6 +1636,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByStoreId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1658,6 +1709,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByStatus({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1730,6 +1782,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByOrderType({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1803,6 +1856,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByItems({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1875,6 +1929,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByOrderedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -1948,6 +2003,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByAcceptedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2021,6 +2077,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByDeclinedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2094,6 +2151,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByCompletedAt({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -2167,6 +2225,7 @@ class _$OrderModelQuery
     );
   }
 
+  @override
   OrderModelQuery orderByTotalAmount({
     bool descending = false,
     Object? startAt = _sentinel,
