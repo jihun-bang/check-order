@@ -1,6 +1,6 @@
 # Tablet Order App & Web
 
-This is an order-checking application built with Flutter. The project adopts **Clean Architecture** and the **MVVM (Model-View-ViewModel)** pattern to create a modern and scalable application. State management is handled by **Riverpod**, with extensive use of code generation to maximize productivity and type safety.
+This is an order application built with Flutter. The project adopts **Clean Architecture** and the **MVVM (Model-View-ViewModel)** pattern to create a modern and scalable application. State management is handled by **Riverpod**, with extensive use of code generation to maximize productivity and type safety.
 
 ## 🏛️ Tech Stack & Architecture
 
