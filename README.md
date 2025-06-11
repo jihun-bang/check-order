@@ -63,8 +63,8 @@ The following is a list of the core libraries used in this project.
 
 1.  **Clone the repository**
     ```bash
-    git clone <your-repository-url>
-    cd check_order
+    git clone https://github.com/jihun-bang/tablet_order_app.git
+    cd tablet_order_app
     ```
 2.  **Install packages**
     ```bash
